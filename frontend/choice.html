@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Choose your side:</title>
+	<style>
+		body {
+            background-color: antiquewhite;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+		.button-container {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+		}
+
+		.button {
+			height: 300px;
+			width: 400px;
+			font-size: 24px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 10px;
+			cursor: pointer;
+			transition: all 0.2s ease-in-out;
+            margin : 100px;
+		}
+
+		.button:hover {
+			background-color: #3e8e41;
+            color: #1e1e1e;
+			transform: scale(1.05) translate(0, -10px);
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+		}
+
+		.button:active {
+			background-color: #1e1e1e;
+			color: #fff;
+			transform: scale(0.95) translate(0, 5px);
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+		}
+
+		#button1 {
+			background-color: #4CAF50;
+		}
+
+		#button1:active {
+			background-color: #387d3c;
+		}
+
+		#button2 {
+			background-color: #f44336;
+		}
+
+		#button2:active {
+			background-color: #ba1e1e;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="button-container">
+		<a href="intsrument.html"><button id="button1" class="button">Chords</button></a>
+		<a href="intsrument.html"><button id="button2" class="button">Tabs</button></a>
+	</div>
+
+</body>
+</html>
