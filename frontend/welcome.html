@@ -1,12 +1,68 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>note!</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Sawarabi+Gothic&display=swap" rel="stylesheet">
+
+    <title>Welcome to Note!</title>
+
     <link rel="stylesheet" href="welcome.css">
   </head>
   <body>
-    <div class="logo"></div>
-    <a href="choice.html" class="button">Go next<span class="arrow"></span></a>
-    <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor magna vel magna fringilla bibendum.</div>
+    <div class="wrap">
+      <div class="menu">
+        <ul>
+          <li><a href="about_us.html">ABOUT US</a> </li>
+          <li><a href="#"><img src="logo1.jpg" alt="Logo" class="logo-image"></a> </li>
+          <li><a href="#">CREATE!</a> </li>
+        </ul>
+
+
+      </div>
+    </div>
+
+    <div class="wrap-search">
+      <div class="search">
+        <input type="text" class="searchTerm" placeholder="Search...">
+        <button type="submit" class="searchButton">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+
+
+    </div>
+
+
+
+
+    <div class="container">
+      <div class="row">
+        <button class="btn guitar">
+          <span class="btn-text">Guitar</span>
+          <span class="arrow"></span>
+        </button>
+        <button class="btn kalimba">
+          <span class="btn-text">Kalimba</span>
+          <span class="arrow"></span>
+        </button>
+        <button class="btn piano">
+          <span class="btn-text">Piano</span>
+          <span class="arrow"></span>
+        </button>
+      </div>
+      <div class="row">
+        <button class="btn drums">
+          <span class="btn-text">Drums</span>
+          <span class="arrow"></span>
+        </button>
+        <button class="btn ukulele">
+          <span class="btn-text">Ukulele</span>
+          <span class="arrow"></span>
+        </button>
+      </div>
+    </div>
+
   </body>
 </html>
