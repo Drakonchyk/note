@@ -8,7 +8,7 @@
 
     <title>Songs</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='songs_choice.css') } }">
+    <link rel="stylesheet" href="{{ url_for('static', filename='songs_choice.css') }}">
   </head>
   <body>
 
@@ -17,9 +17,9 @@
     <div class="wrap">
       <div class="menu">
         <ul>
-          <li><a href="about_us.html">ABOUT US</a> </li>
-          <li><a href="welcome.html"><img src="logo1.jpg" alt="Logo" class="logo-image"></a> </li>
-          <li><a href="create.html">CREATE!</a> </li>
+          <li><a href="{{ url_for('about') }}">ABOUT US</a> </li>
+          <li><a href="{{ url_for('welcome') }}"><img src="{{ url_for('static', filename='logo1.jpg') }}" alt="Logo" class="logo-image"></a> </li>
+          <li><a href="{{ url_for('create') }}">CREATE!</a> </li>
         </ul>
 
 
@@ -52,35 +52,35 @@
     <div class="song_choice">
         <div class="filters">
             <div id="filter">
-                <h3>Intsruments</h3>
+                <h3>Instruments</h3>
                 <label>
-                <input type="checkbox" name="guitar" value="guitar">
+                <input type="checkbox" name="search_option1" value="guitar">
                 Guitar
                 </label>
                 <label>
-                <input type="checkbox" name="guitar" value="piano">
+                <input type="checkbox" name="search_option2" value="piano">
                 Piano
                 </label>
                 <label>
-                <input type="checkbox" name="ukulele" value="ukulele">
+                <input type="checkbox" name="search_option3" value="ukulele">
                 Ukulele
                 </label>
                 <label>
-                <input type="checkbox" name="kalimba" value="kalimba">
+                <input type="checkbox" name="search_option4" value="kalimba">
                 Kalimba
                 </label>
                 <label>
-                <input type="checkbox" name="drums" value="drums">
+                <input type="checkbox" name="search_option5" value="drums">
                 Drums
                 </label>
 
                 <h3>Categories</h3>
                 <label>
-                    <input type="checkbox" name="chords" value="chords">
+                    <input type="checkbox" name="category1" value="chords">
                     Chords
                     </label>
                     <label>
-                    <input type="checkbox" name="tabs" value="tabs">
+                    <input type="checkbox" name="category2" value="tabs">
                     Tabs
                     </label>
             </div>
@@ -95,28 +95,13 @@
       </div> -->
 
       <div class="content">
+        {% for object in objects %}
             <div class="song">
-                <div class="song-name"><a href="song_pg.html">Song name</a></div>
+                <div class="song-name"><a href="/object/{{ object.id }}">{{ object.title }} - {{ object.author }}</a></div>
             </div>
-            <div class="song">
-                <div class="song-name"><a href="#">Song name</a></div>
-            </div>
-            <div class="song">
-                <div class="song-name"><a href="#">Song name</a></div>
-
-            </div>
-            <div class="song">
-                <div class="song-name"><a href="#">Song name</a></div>
-            </div>
-
-
+        {% endfor %}
       </div>
 
-
-
     </div>
-
-
-
   </body>
 </html>

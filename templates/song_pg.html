@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Sawarabi+Gothic&display=swap" rel="stylesheet">
 
-    <title>song</title>
+    <title>{{ object.title }}</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='song_pg.css') } }">
   </head>
@@ -16,9 +16,9 @@
   <div class="wrap">
     <div class="menu">
       <ul>
-        <li><a href="about_us.html">ABOUT US</a> </li>
-        <li><a href="welcome.html"><img src="{{ url_for('static', filename='logo1.jpg') }}" alt="Logo" class="logo-image"></a> </li>
-        <li><a href="create.html">CREATE!</a> </li>
+        <li><a href="{{ url_for('about') }}">ABOUT US</a> </li>
+        <li><a href="{{ url_for('welcome') }}"><img src="{{ url_for('static', filename='logo1.jpg') }}" alt="Logo" class="logo-image"></a> </li>
+        <li><a href="{{ url_for('create') }}">CREATE!</a> </li>
       </ul>
 
 
@@ -28,13 +28,9 @@
   </header>
 
   <div class="song">
-    <h3>Title</h3>
+    <h3>{{ object.title }} - {{ object.author }}</h3>
         <div class="text">
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis, aspernatur quos nemo beatae doloremque quidem. Necessitatibus maiores veniam quasi assumenda nisi ea temporibus natus illo nihil id! Enim, praesentium mollitia!
-        Quo officia necessitatibus soluta assumenda, consectetur id amet aspernatur sapiente voluptatem dicta tenetur fuga tempora totam veniam sed illo exercitationem mollitia consequatur iste nobis, voluptate cupiditate labore voluptates ab. Qui.
-        Id sequi aliquid maxime laborum nulla repudiandae qui dolor! Fugit quos illum velit repellendus maiores nostrum atque quis? Ipsam sunt possimus debitis! Nesciunt doloribus aut dolorum ad atque eveniet temporibus?
-        Distinctio, laboriosam harum. Molestias eaque quis sit fugit voluptatibus id corporis. Porro reiciendis laborum odit non distinctio nostrum cum, natus corporis, harum voluptas deleniti blanditiis odio, quidem voluptate expedita debitis?
-        Dolor voluptatem, dicta nobis aperiam repellendus iusto non quae omnis rerum laborum. Ratione unde atque culpa cumque ipsam cupiditate optio, voluptatum quod possimus deleniti velit voluptas eligendi sapiente veniam repellendus?</p>
+        <p>{{ object.text }}</p>
         </div>
   </div>
   </body>
