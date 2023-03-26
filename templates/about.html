@@ -8,7 +8,7 @@
 
     <title>About us</title>
 
-    <link rel="stylesheet" href="about_us.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
   </head>
   <body>
     <header>
@@ -16,9 +16,9 @@
   <div class="wrap">
     <div class="menu">
       <ul>
-        <li><a href="about_us.html">ABOUT US</a> </li>
-        <li><a href="welcome.html"><img src="logo1.jpg" alt="Logo" class="logo-image"></a> </li>
-        <li><a href="create.html">CREATE!</a> </li>
+        <li><a href="#">ABOUT US</a> </li>
+        <li><a href="{{ url_for('welcome') }}"><img src="{{ url_for('static', filename='logo1.jpg') }}" alt="Logo" class="logo-image"></a> </li>
+        <li><a href="{{ url_for('create') }}">CREATE!</a> </li>
       </ul>
 
 
