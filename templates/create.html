@@ -29,39 +29,40 @@
     <div class="text">Add song!</div>
 
     <div class="form-container">
-        <form>
+        <form action="{{ url_for('create') }}" method="POST">
             <div class="input-container">
-                <input type="text" class='song-name' placeholder="Song name..."><br>
-                <input type="text" class='author-name' placeholder="Author name..."><br>
+                <input type="text" name='song_name' class='song-name' placeholder="Song name..."><br>
+                <input type="text" name = 'author_name' class='author-name' placeholder="Author name..."><br>
                 <input type="submit" value="Submit">
             </div>
-        </form>
-    </div>
+        
 
     <div class="text-below-inputs">Choose instrument:</div>
 
 
     <div class="options-container">
         <div class="option">
-            <button class="option-button" id="option1">Guitar</button>
+            <button class="option-button" name='instr' value='guitar' id="option1">Guitar</button>
         </div>
         <div class="option">
-            <button class="option-button" id="option2">Ukulele</button>
+            <button class="option-button" name='instr' value='ukulele' id="option2">Ukulele</button>
         </div>
         <div class="option">
-            <button class="option-button" id="option3">Piano</button>
+            <button class="option-button" name='instr' value='piano' id="option3">Piano</button>
         </div>
         <div class="option">
-            <button class="option-button" id="option4">Drums</button>
+            <button class="option-button" name='instr' value='drums' id="option4">Drums</button>
         </div>
         <div class="option">
-            <button class="option-button" id="option5">Kalimba</button>
+            <button class="option-button" name='instr' value='kalimba' id="option5">Kalimba</button>
         </div>
     </div>
     
     <div class="input-container">
-        <textarea class="textarea" placeholder="Enter your text here..."></textarea>
+        <textarea class="textarea" name = "song_text" placeholder="Enter your text here..."></textarea>
     </div>
+  </form>
+  </div>
 
     <script>
 

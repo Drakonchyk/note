@@ -39,7 +39,6 @@ def search():
             tipe = 'both'
         search_songs = Search(query, new_instrument, tipe)
         results = search_songs.find()
-        print(instrument_s)
         print(query)
         print(new_instrument)
         print(tipe)
@@ -55,8 +54,16 @@ def welcome():
 def about():
     return render_template('about.html')
 
-@app.route('/create')
+@app.route('/create', methods=['GET', 'POST'])
 def create():
+    if request.method == 'POST':
+        name = request.form['song_name']
+        authr = request.form['author_name']
+        instrument = request.form['instr']
+        collection = instrument[0].upper() + instrument
+        coll = db.collection
+        text = request.form['song_text']
+        coll.insert_one({'title': name, 'author': authr, 'categories': 'both','instrument': instrument, 'text': text})
     return render_template('create.html')
 
 @app.route('/object/<object_id>')
