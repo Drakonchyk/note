@@ -31,8 +31,8 @@
 
   <div class="searching">
   <div class="wrap-search">
+    <form method="post" action="{{ url_for('search') }}">
     <div class="search">
-      <form method="post" action="{{ url_for('search') }}">
       <input type="text" name = 'query' class="searchTerm" placeholder="Search...">
       <button type="submit" name = 'search' class="searchButton">
       </form>
