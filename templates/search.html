@@ -30,7 +30,7 @@
  
     <div class="searching">
     <div class="wrap-search">
-      <form method="post" action="{{ url_for('search') }}">
+      <form method="POST" action="{{ url_for('search') }}">
       <div class="search">
         <input type="text" name="query" class="searchTerm" placeholder="Search...">
         <button type="submit" class="searchButton">
@@ -55,40 +55,40 @@
         <div class="filters">
             <div id="filter">
                 <h3>Instruments</h3>
-                <form method="post" action="{{ url_for('search') }}">
+                <form method="POST" action="{{ url_for('search') }}">
                 <label>
-                <input type="checkbox" name="search_option1" value="guitar">
+                <input type="checkbox" name="instrument_checkbox" value="guitar">
                 Guitar
                 </label>
                 <label>
-                <input type="checkbox" name="search_option2" value="piano">
+                <input type="checkbox" name="instrument_checkbox" value="piano">
                 Piano
                 </label>
                 <label>
-                <input type="checkbox" name="search_option3" value="ukulele">
+                <input type="checkbox" name="instrument_checkbox" value="ukulele">
                 Ukulele
                 </label>
                 <label>
-                <input type="checkbox" name="search_option4" value="kalimba">
+                <input type="checkbox" name="instrument_checkbox" value="kalimba">
                 Kalimba
                 </label>
                 <label>
-                <input type="checkbox" name="search_option5" value="drums">
+                <input type="checkbox" name="instrument_checkbox" value="drums">
                 Drums
                 </label>
                 </form>
 
                 <h3>Categories</h3>
-                <form method="post" action="{{ url_for('search') }}"></form>
+                <form method="POST" action="{{ url_for('search') }}">
                 <label>
-                    <input type="checkbox" name="category1" value="chords">
+                    <input type="checkbox" name="tipe" value="chords">
                     Chords
                     </label>
                     <label>
-                    <input type="checkbox" name="category2" value="tabs">
+                    <input type="checkbox" name="tipe" value="tabs">
                     Tabs
                     </label>
-                  </form>
+                </form>
             </div>
             </div>
       <!-- <div id="content">
@@ -101,11 +101,15 @@
       </div> -->
 
       <div class="content">
+        {% if results %}
         {% for object in results %}
             <div class="song">
                 <div class="song-name"><a href="/object/{{ object.id }}">{{ object.title }} - {{ object.author }}</a></div>
             </div>
         {% endfor %}
+        {% else %}
+        <p>Nothing found</p>
+        {% endif %}
       </div>
 
     </div>

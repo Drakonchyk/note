@@ -31,13 +31,13 @@
 
   <div class="searching">
   <div class="wrap-search">
-    <form method="post" action="{{ url_for('search') }}">
+    <form method="POST" action="{{ url_for('search') }}">
     <div class="search">
-      <input type="text" name = 'query' class="searchTerm" placeholder="Search...">
+      <input type="text" name ="query" class="searchTerm" placeholder="Search...">
       <button type="submit" name = 'search' class="searchButton">
-      </form>
         <i class="fa fa-search"></i>
       </button>
+      </form>
     </div>
 
 
@@ -48,26 +48,26 @@
 
     <div class="container">
       <div class="row">
-        <form method="post" action="{{ url_for('search') }}">
-        <button  data-filter=".categorie1" name="instrument" value="guitar" class="btn guitar" onclick="window.location.href='songs_choice.html#guitar'">
+        <form method="POST" action="{{ url_for('search') }}">
+        <button name="instrument_button" value="guitar" class="btn guitar">
           <span class="btn-text">Guitar</span>
 
         </button>
-        <button class="btn kalimba" name="instrument" value="kalimba" onclick="window.location.href='songs_choice.html#kalimba'">
+        <button class="btn kalimba" name="instrument_button" value="kalimba">
           <span class="btn-text">Kalimba</span>
 
         </button>
-        <button class="btn piano" name="instrument" value="piano" onclick="window.location.href='songs_choice.html#piano'">
+        <button class="btn piano" name="instrument_button" value="piano">
           <span class="btn-text">Piano</span>
 
         </button>
       </div>
       <div class="row">
-        <button class="btn drums" name="instrument" value="drums" onclick="window.location.href='songs_choice.html#drums'">
+        <button class="btn drums" name="instrument_button" value="drums">
           <span class="btn-text">Drums</span>
 
         </button>
-        <button class="btn ukulele" name="instrument" value="ukulele" onclick="window.location.href='songs_choice.html#ukulele'">
+        <button class="btn ukulele" name="instrument_button" value="ukulele">
           <span class="btn-text">Ukulele</span>
 
         </button>

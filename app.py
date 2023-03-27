@@ -14,25 +14,38 @@ db = client.get_database('SongDatabase')
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)
 
-class JSONEncoder(json.JSONEncoder):
-    def default(self, o):
-        if isinstance(o, ObjectId):
-            return str(o)
-        return json.JSONEncoder.default(self, o)
+# class JSONEncoder(json.JSONEncoder):
+#     def default(self, o):
+#         if isinstance(o, ObjectId):
+#             return str(o)
+#         return json.JSONEncoder.default(self, o)
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     if request.method == 'POST':
-        query = request.form['query']
-        instruments = request.form.getlist('instruments')
-        tipe = request.form['tipe']
-        search_songs = Search(query if query else '',
-                        instruments if instruments else ['kalimba', 'guitar', 'ukulele', 'piano', 'drums'],
-                        tipe if tipe else 'both')
+        query = request.form.get('query')
+        if not query:
+            query = ''
+        instrument_button = request.form.get('instrument_button')  # Use get() method to retrieve value
+        instrument_s = request.form.getlist('instrument_checkbox')
+        if instrument_button:
+            new_instrument = [instrument_button]
+        elif instrument_s:
+            new_instrument = instrument_s
+        else:
+            new_instrument = ['kalimba', 'guitar', 'ukulele', 'piano', 'drums']
+        tipe = request.form.getlist('tipe')
+        if not tipe or len(tipe) == 2:
+            tipe = 'both'
+        search_songs = Search(query, new_instrument, tipe)
         results = search_songs.find()
+        print(instrument_s)
+        print(query)
+        print(new_instrument)
+        print(tipe)
         return render_template('search.html', results=results)
-    else:
-        return render_template('search.html')
+    return render_template('search.html')
+
 
 @app.route('/')
 def welcome():
@@ -49,7 +62,7 @@ def create():
 @app.route('/object/<object_id>')
 def object_detail(object_id):
     # Look up the object in the database using the object_id parameter
-    for collection_name in ['Guitar', 'Kalimba', 'Ukulele', 'Piano', 'Drums']:
+    for collection_name in ['guitar', 'kalimba', 'ukulele', 'piano', 'drums']:
         collection = db.get_collection(collection_name)
         obj = collection.find_one({ '_id': ObjectId(object_id) })
         if obj:
