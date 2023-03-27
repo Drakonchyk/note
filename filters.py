@@ -65,7 +65,7 @@ class Search (Filter):
                     result.append(song)
         if result:
             return result
-        return 'Nothing found'
+        return None
 
 # j = Filter(['guitar'])
 # h = j.get_filtered_songs()
