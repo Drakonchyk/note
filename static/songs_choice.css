@@ -7,7 +7,7 @@
   
   /* CSS styles for the body */
   body {
-    display: flex;
+    display: block;
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
