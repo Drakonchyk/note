@@ -27,16 +27,66 @@
     </div>
     </nav>
     </header>
- 
+    <!-- <script>
+      // Get references to the checkboxes
+    const checkbox_guitar = document.getElementById("checkbox_guitar");
+    const checkbox_drums = document.getElementById("checkbox_drums");
+    const checkbox_ukulele = document.getElementById("checkbox_ukulele");
+    const checkbox_piano = document.getElementById("checkbox_piano");
+    const checkbox_kalimba = document.getElementById("checkbox_kalimba");
+    const checkbox_chords = document.getElementById("checkbox_chords");
+    const checkbox_tabs = document.getElementById("checkbox_tabs");
+
+
+    // Add event listeners to the checkboxes
+    checkbox_guitar.addEventListener("change", () => {
+      localStorage.setItem("checkbox_guitar", checkbox_guitar.checked);
+    });
+
+    checkbox_drums.addEventListener("change", () => {
+      localStorage.setItem("checkbox_drums", checkbox_drums.checked);
+    });
+
+    checkbox_ukulele.addEventListener("change", () => {
+      localStorage.setItem("checkbox_ukulele", checkbox_ukulele.checked);
+    });
+
+    checkbox_piano.addEventListener("change", () => {
+      localStorage.setItem("checkbox_piano", checkbox_piano.checked);
+    });
+
+    checkbox_kalimba.addEventListener("change", () => {
+      localStorage.setItem("checkbox_kalimba", checkbox_kalimba.checked);
+    });
+
+    checkbox_chords.addEventListener("change", () => {
+      localStorage.setItem("checkbox_chords", checkbox_chords.checked);
+    });
+
+    checkbox_tabs.addEventListener("change", () => {
+      localStorage.setItem("checkbox_tabs", checkbox_tabs.checked);
+    });
+
+
+    
+
+    // On page load, retrieve the checkbox states from local storage
+    checkbox_guitar.checked = localStorage.getItem("checkbox_guitar") === "true";
+    checkbox_kalimba.checked = localStorage.getItem("checkbox_kalimba") === "true";
+    checkbox_piano.checked = localStorage.getItem("checkbox_piano") === "true";
+    checkbox_ukulele.checked = localStorage.getItem("checkbox_ukulele") === "true";
+    checkbox_drums.checked = localStorage.getItem("checkbox_drums") === "true";
+    checkbox_chords.checked = localStorage.getItem("checkbox_chords") === "true";
+    checkbox_tabs.checked = localStorage.getItem("checkbox_tabs") === "true";
+    </script> -->
+    <form method="POST" action="{{ url_for('search') }}">
     <div class="searching">
     <div class="wrap-search">
-      <form method="POST" action="{{ url_for('search') }}">
-      <div class="search">
-        <input type="text" name="query" class="searchTerm" placeholder="Search...">
-        <button type="submit" class="searchButton">
-          <i class="fa fa-search"></i>
-        </button>
-        </form>
+        <div class="search">
+          <input type="text" name ="query" class="searchTerm" placeholder="Search...">
+          <button type="submit" name = 'search' class="searchButton">
+            <i class="fa fa-search"></i>
+          </button>
       </div>
 
 
@@ -51,44 +101,41 @@
           </select>
 
     </div> -->
+    
     <div class="song_choice">
         <div class="filters">
             <div id="filter">
                 <h3>Instruments</h3>
-                <form method="POST" action="{{ url_for('search') }}">
-                <label>
-                <input type="checkbox" name="instrument_checkbox" value="guitar">
+                <label for="checkbox_guitar">
+                <input type="checkbox" id="checkbox_guitar" name="instrument_checkbox" value="guitar">
                 Guitar
                 </label>
-                <label>
-                <input type="checkbox" name="instrument_checkbox" value="piano">
+                <label for="checkbox_piano">
+                <input type="checkbox" id="checkbox_piano" name="instrument_checkbox" value="piano">
                 Piano
                 </label>
                 <label>
-                <input type="checkbox" name="instrument_checkbox" value="ukulele">
+                <input type="checkbox" id="checkbox_ukulele" name="instrument_checkbox" value="ukulele">
                 Ukulele
                 </label>
                 <label>
-                <input type="checkbox" name="instrument_checkbox" value="kalimba">
+                <input type="checkbox" id="checkbox_kalimba" name="instrument_checkbox" value="kalimba">
                 Kalimba
                 </label>
                 <label>
-                <input type="checkbox" name="instrument_checkbox" value="drums">
+                <input type="checkbox" id="checkbox_drums" name="instrument_checkbox" value="drums">
                 Drums
                 </label>
-                </form>
 
                 <h3>Categories</h3>
-                <form method="POST" action="{{ url_for('search') }}">
                 <label>
-                    <input type="checkbox" name="tipe" value="chords">
+                    <input type="checkbox" id="checkbox_chords" name="categories" value="chords">
                     Chords
                     </label>
                     <label>
-                    <input type="checkbox" name="tipe" value="tabs">
+                    <input type="checkbox" id="checkbox_tabs" name="categories" value="tabs">
                     Tabs
                     </label>
-                </form>
             </div>
             </div>
       <!-- <div id="content">
@@ -99,7 +146,7 @@
         <div class="item category2">Item 5</div>
         <div class="item category3">Item 6</div>
       </div> -->
-
+      </form>
       <div class="content">
         {% if results %}
         {% for object in results %}

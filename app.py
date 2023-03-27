@@ -34,7 +34,7 @@ def search():
             new_instrument = instrument_s
         else:
             new_instrument = ['kalimba', 'guitar', 'ukulele', 'piano', 'drums']
-        tipe = request.form.getlist('tipe')
+        tipe = request.form.getlist('categories')
         if not tipe or len(tipe) == 2:
             tipe = 'both'
         search_songs = Search(query, new_instrument, tipe)
