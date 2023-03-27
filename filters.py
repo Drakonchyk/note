@@ -1,18 +1,17 @@
 """ Search class """
 from pymongo import MongoClient
-import json
 
 client = MongoClient("mongodb+srv://user:user-password@testcluster.tyin0tg.mongodb.net/?retryWrites=true&w=majority")
 db = client.get_database('SongDatabase')
 
 class Filter:
-    def __init__(self, instruments = ['kalimba', 'guitar', 'ukulele', 'piano', 'drums'], \
+    def __init__(self, instruments = ['kalimba', 'guitar', 'ukulele', 'piano', 'drums'],
                  tipe = 'both') -> None:
         self.instruments = instruments
         self.collections = []
         self.tipe = tipe # 'chords', 'tabs' or 'both'
 
-    def get_filtered_songs(self):
+    def get_filtered_songs(self) -> list:
 
         if 'guitar' in self.instruments:
             self.collections.append(db.Guitar)
@@ -28,23 +27,24 @@ class Filter:
         return self.collections
 
 class Search (Filter):
-    def __init__(self, request="", instruments = ['kalimba', 'guitar', 'ukulele', 'piano', 'drums'], tipe = 'both') -> None:
+    def __init__(self, request="",
+                 instruments = ['kalimba', 'guitar', 'ukulele', 'piano', 'drums'],
+                 tipe = 'both') -> None:
         super().__init__(instruments, tipe)
         self.request = request
 
-    def find(self):
+    def find(self) -> list:
         result = []
         collections = Filter(self.instruments).get_filtered_songs()
         if self.request == "":
             for collection in collections:
                 if self.tipe == 'both':
-                    file = list(collection.find({'$or': [{'categories': 'chords'}, {'categories': 'tabs'}]}))
+                    file = list(collection.find({'$or': [{'categories': 'chords'},
+                                                         {'categories': 'tabs'}]}))
                 elif self.tipe == 'chords':
                     file = list(collection.find({'categories': 'chords'}))
                 else:
                     file = list(collection.find({'categories': 'tabs'}))
-
-
                 for song in file:
                     if song not in result:
                         result.append(song)
