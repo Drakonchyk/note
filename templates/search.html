@@ -104,11 +104,11 @@
         {% if results %}
         {% for object in results %}
             <div class="song">
-                <div class="song-name"><a href="/object/{{ object.id }}">{{ object.title }} - {{ object.author }}</a></div>
+                <div class="song-name"><a href="{{ url_for('object_detail', object_id=object._id) }}">{{ object.title }} - {{ object.author }}</a></div>
             </div>
         {% endfor %}
         {% else %}
-        <p>Nothing found</p>
+            <p>Nothing found</p>
         {% endif %}
       </div>
 

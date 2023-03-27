@@ -62,16 +62,15 @@ def create():
 @app.route('/object/<object_id>')
 def object_detail(object_id):
     # Look up the object in the database using the object_id parameter
-    for collection_name in ['guitar', 'kalimba', 'ukulele', 'piano', 'drums']:
-        collection = db.get_collection(collection_name)
-        obj = collection.find_one({ '_id': ObjectId(object_id) })
+    obj = []
+    for collection in Filter().get_filtered_songs():
+        obj = list(collection.find({ '_id': ObjectId(object_id) }))
         if obj:
             break
-
     # If the object is not found, return a 404 error
     if obj is None:
         abort(404)
-
+    obj = obj[0]
     # Render a template with the details of the object
     return render_template('song_pg.html', object=obj)
 
