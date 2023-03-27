@@ -8,7 +8,7 @@
 
     <title>{{ object.title }}</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='song_pg.css') } }">
+    <link rel="stylesheet" href="{{ url_for('static', filename='song_pg.css') }}">
   </head>
   <body>
     <header>
@@ -30,7 +30,9 @@
   <div class="song">
     <h3>{{ object.title }} - {{ object.author }}</h3>
         <div class="text">
-        <p>{{ object.text }}</p>
+        {% for line in object.text %}
+        <p>{{ line }}</p>
+        {% endfor %}
         </div>
   </div>
   </body>
