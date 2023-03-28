@@ -30,6 +30,7 @@ Filter class contains get_filetered_songs method, that sort our songs by instrum
 This class is used to search for songs by instrument and by type of notes(it can be chords, tabs or both).
 If request is given, we search for songs which title or author matching the request.
 If we have not found any data function returns None, else it returns list of songs, each song is a dictionary.
+
 ![image](https://user-images.githubusercontent.com/116728854/228354457-1d6252b5-5252-4823-bd6f-982e6aecc4b4.png)
 
 ## Flask
