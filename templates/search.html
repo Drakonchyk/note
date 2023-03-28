@@ -154,7 +154,12 @@
         {% for object in results %}
             <div class="song">
                 <div class="song-name"><a href="{{ url_for('object_detail', object_id=object._id) }}">{{ object.title }} - {{ object.author }}</a></div>
+           
+            <div class="song-info">
+              <h4>Instrument</h4>
+              <h4>Tabs/Chords</h4>
             </div>
+           </div>
         {% endfor %}
         {% else %}
             <p>Nothing found</p>
