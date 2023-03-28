@@ -73,42 +73,6 @@
     <div class="input-container">
         <textarea class="textarea" name = "song_text" placeholder="Enter your text here..."></textarea>
     </div>
-  
-
-    <script>
-
-        const optionButtons = document.querySelectorAll('.option-button');
-        const submitButton = document.querySelector('input[type="submit"]');
-        const songNameInput = document.querySelector('.song-name');
-        const authorNameInput = document.querySelector('.author-name');
-        const songTextInput = document.querySelector('.textarea');
-        let instrumentNameInput = '';
-
-        optionButtons.forEach(button => {
-          button.addEventListener('click', () => {
-            optionButtons.forEach(button => {
-              button.classList.remove('active');
-            });
-            button.classList.add('active');
-            instrumentNameInput = button.innerHTML;
-            checkValidity();
-          });
-        });
-
-        function checkValidity() {
-          if (songNameInput.value !== '' && authorNameInput.value !== '' && songTextInput.value !== '' && instrumentNameInput) {
-            submitButton.disabled = false;
-          } else {
-            submitButton.disabled = true;
-          }
-        }
-
-        songNameInput.addEventListener('input', checkValidity);
-        authorNameInput.addEventListener('input', checkValidity);
-        songTextInput.addEventListener('input', checkValidity);
-        form.addEventListener('submit', validateForm);
-
-    </script>
         </form>
     </div>
         </div>
