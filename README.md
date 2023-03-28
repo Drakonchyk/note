@@ -37,7 +37,9 @@ If we have not found any data function returns None, else it returns list of son
 To work with flask we are installing next libraries:
 - flask
 - bson
+
 ![image](https://user-images.githubusercontent.com/116728854/228357477-63ddc060-e59e-4dd8-986d-edf4929259ba.png)
+
 Firstly, we are creating secret key for the Flask application.
 After we implement search() function which submits chosen filters to class Search.
 welcome() function simply opens main page. 
