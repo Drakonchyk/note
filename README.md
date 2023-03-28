@@ -34,7 +34,7 @@ If we have not found any data function returns None, else it returns list of son
 ![image](https://user-images.githubusercontent.com/116728854/228354457-1d6252b5-5252-4823-bd6f-982e6aecc4b4.png)
 
 ## Flask
-To work with flask we are installing next libraries(except for filters):
+To work with flask we are installing next libraries (except for filters):
 
 ![image](https://user-images.githubusercontent.com/116728854/228357477-63ddc060-e59e-4dd8-986d-edf4929259ba.png)
 
