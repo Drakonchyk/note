@@ -17,3 +17,11 @@ As a result, you will be able to type song name, author and chords or tabs. Afte
 
 ### About us 
 About us page info about our project, developers, and our images.
+
+### MongoDB
+
+To work with our database we have installed(pip install pymongo) pymongo library.
+To operate with our data we have created a mongo client
+
+![image](https://user-images.githubusercontent.com/116728854/228349959-3eb30bf4-8ea5-4fc5-a267-3e7b225543e8.png)
+
