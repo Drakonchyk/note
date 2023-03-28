@@ -9,18 +9,18 @@
   body {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
     background-color: #e7dfd8;
   }
 
+  /* styles for menu started */
   header{
     width: 100%;
     height: 150px;
     text-align: center;
     background-color: #dbcec2;
     padding: 10px;
-    z-index: 100; /* set a high z-index to ensure it is on top of other elements */
+    z-index: 100;
     font-family: 'Sawarabi Gothic', sans-serif;
     border-bottom: 2px solid rgb(105, 80, 80);
 }
@@ -56,6 +56,7 @@
     color: #896e55;
     text-decoration: none;  
   }
+  /* menu styles ended */
 
 
 /* CSS styles for the logo */
@@ -87,6 +88,7 @@
     padding: 10px;
   }
 
+  /* block that divedes info about product and developers */
 .our-team{
   display: block;
   text-align: center;
@@ -98,14 +100,13 @@
   color: white;
   font-size: 60px;
   font-family: 'Montserrat', sans-serif;
-  /* font-family: 'Sawarabi Gothic', sans-serif; */
   font-weight: 400;
   border-top: 2px solid rgb(105, 80, 80);
   border-bottom: 2px solid rgb(105, 80, 80);
 
 }
 
-
+/* styles for blocks that contain info about developers */
 .team{
   display: block;
 
@@ -121,9 +122,9 @@
 }
 
 .photo{
-  border-radius: 50%;
   width: 350px;
   height: 350px;
+  border-radius: 50%;
 }
 .member-info{
   padding-top: 20px;
