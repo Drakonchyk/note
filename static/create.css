@@ -142,13 +142,11 @@ background-color: rgb(182, 161, 98);
 }
 /* CSS styles for the text below input fields */
 .text-below-inputs {
-  display: flex;
+  display: block;
   text-align: center;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   margin-top: 2px;
-  margin-right: 330px;
   font-size: 48px;
   font-family: 'Montserrat', sans-serif;
 }
@@ -177,14 +175,14 @@ background-color: rgb(182, 161, 98);
   width: 20px;
 }
 .tabs-option{
-  margin-left: 35px;
   margin-bottom: 20px;
+  text-align: center;
+  display: block;
 }
 .tabs-option label{
   font-size: 24px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
-  display: block;
 
 }
 .tabs-option input[type="checkbox"] {
@@ -193,24 +191,6 @@ background-color: rgb(182, 161, 98);
   height: 20px;
   width: 20px;
 }
-
-/* .option-button {
-  background-color: #fdf8f3;
-  color: #665647;
-  font-size: 24px;
-  border: 3px solid #665647;
-  cursor: pointer;
-  border-radius: 10px; 
-  width: 130px;
-  height: 80px;
-  transition: all 0.5s;
-  margin-bottom: 20px;
-}
-
-.option-button.active {
-  background-color: #c7a589;
-  color: #fff;
-} */
 
 .input-container {
   display: flex;
