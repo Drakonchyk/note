@@ -58,6 +58,8 @@
   }
 
 .song{
+    display: block;
+    align-items: center;
     margin-top: 30px;
     font-size: 25px;
     font-family: 'Sawarabi Gothic', sans-serif;
@@ -69,8 +71,10 @@
 }
 .text {
     margin-top: 20px;
-    width: 700px;
+    min-width: 500px;
+    width: auto;
     padding-top: 5px;
     text-align: left;
     font-size: 25px;
+    margin-bottom: 100px;
 }
