@@ -33,13 +33,11 @@ If we have not found any data function returns None, else it returns list of son
 ![image](https://user-images.githubusercontent.com/116728854/228354457-1d6252b5-5252-4823-bd6f-982e6aecc4b4.png)
 
 ## Flask
-To work with flask we are installing next libraries:
-- flask
-- bson
+To work with flask we are installing next libraries (except for filters):
 ![image](https://user-images.githubusercontent.com/116728854/228357477-63ddc060-e59e-4dd8-986d-edf4929259ba.png)
 Firstly, we are creating secret key for the Flask application.
 After we implement search() function which submits chosen filters to class Search.
-welcome() function simply opens main page. 
+welcome() function simply opens main page.
 about() function opens page with information about the site.
 create() function is adding songs in the database. All fields(title, author, instrument) are required, except for the checkbox 'I want_tabs!'.
 object_detail() function finds an object in the database and renders a song page with its details
