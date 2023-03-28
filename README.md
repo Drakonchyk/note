@@ -14,3 +14,6 @@ We also have filters on our site. You can choose whether you want: instrument or
 ### Create button
 If you want to share chords or tabs, you can go to the top-right side of our page and click on "Add song" button.
 As a result, you will be able to type song name, author and chords or tabs. After that you choose appropriate instrument and submit everything.
+
+### About us 
+About us page info about our project, developers, and our images.
