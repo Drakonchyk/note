@@ -5,6 +5,9 @@ client = MongoClient("mongodb+srv://user:user-password@testcluster.tyin0tg.mongo
 db = client.get_database('SongDatabase')
 
 class Filter:
+    """
+    class for filtering songs
+    """
     def __init__(self, instruments = ['kalimba', 'guitar', 'ukulele', 'piano', 'drums'],
                  tipe = 'both') -> None:
         self.instruments = instruments
@@ -12,6 +15,10 @@ class Filter:
         self.tipe = tipe # 'chords', 'tabs' or 'both'
 
     def get_filtered_songs(self) -> list:
+        """
+        add wanted collections to the list of collections (self.collections)
+        and return the final list
+        """
 
         if 'guitar' in self.instruments:
             self.collections.append(db.Guitar)
@@ -27,6 +34,11 @@ class Filter:
         return self.collections
 
 class Search (Filter):
+    """
+    search for songs by author or title
+    instruments - wanted instruments for songs (by default - all are chosen)
+    tipe - type of notes
+    """
     def __init__(self, request="",
                  instruments = ['kalimba', 'guitar', 'ukulele', 'piano', 'drums'],
                  tipe = 'both') -> None:
@@ -34,6 +46,11 @@ class Search (Filter):
         self.request = request
 
     def find(self) -> list:
+        """
+        search for songs by instrument and by type of notes
+        (it can be chords, tabs or both) if request is given, \
+searches for songs which title or author mathicng the request  
+        """
         result = []
         collections = Filter(self.instruments).get_filtered_songs()
         if self.request == "":
@@ -66,8 +83,3 @@ class Search (Filter):
         if result:
             return result
         return None
-
-# j = Filter(['guitar'])
-# h = j.get_filtered_songs()
-# i = Search("Скрябін", ["guitar"], tipe='tabs') # example
-# print(i.find())
