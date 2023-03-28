@@ -13,6 +13,7 @@
     background-color: #e7dfd8;
   }
 
+   /* styles for menu started */
   header{
     width: 100%;
     height: 150px;
@@ -55,6 +56,9 @@
     color: #896e55;
     text-decoration: none;  
   }
+ /* menu styles ended */
+
+
 /* CSS styles for the text */
 .text {
   display: flex;

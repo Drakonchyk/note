@@ -9,18 +9,18 @@
   body {
     display: block;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
     background-color: #e7dfd8;
   }
 
+  /* styles for menu started */
   header{
     width: 100%;
     height: 150px;
     text-align: center;
     background-color: #dbcec2;
     padding: 10px;
-    z-index: 100; /* set a high z-index to ensure it is on top of other elements */
+    z-index: 100;
     font-family: 'Sawarabi Gothic', sans-serif;
     border-bottom: 2px solid rgb(105, 80, 80);
 }
@@ -56,7 +56,9 @@
     color: #896e55;
     text-decoration: none;  
   }
+  /* menu styles ended */
 
+  /* styles for search bar  */
 .searching{
     width: 100%;
     height: 90px;
@@ -71,7 +73,7 @@
 
   }
 
-
+/* style for input line */
   .searchTerm {
     width: 100%;
     border: 3px solid#5b4734;
@@ -88,7 +90,7 @@
     color: #867b6f;
   }
 
-
+/* style for search button (used fontAwesome for serch icon)*/
   .searchButton {
     width: 52px;
     height: 51px;
@@ -117,12 +119,10 @@
     flex-wrap: wrap;
 }
 
-
+/* styles for filters (Instruments + Chords/Tabs) */
 .filters{
     width: 25%;
-
     background-color: #F4EDE7;
-    /* margin-left: 5px; */
     padding: 10px;
 }
 #filter{
@@ -134,11 +134,14 @@
 label{
     display: block;
 }
+/* style for size and position of checkbox */
 #filter input[type="checkbox"] {
     transform: scale(1.5);
     vertical-align: middle;
     margin-right: 10px;
 }
+
+/* styles for variants of songs that is going to occure */
 .content{
     width: 75%;
     padding: 10px;
@@ -179,22 +182,8 @@ label{
   text-align: right;
 }
 
-/* .song ul li{
-    display: inline-block;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    margin-right: 20px;
-}
-
-.song ul li a{
-    text-align: center;
-    color: black;
-    font-size: 30px;
-    font-family: 'Sawarabi Gothic', sans-serif;
-} */
-
-.button{
+/* style for button (comented due to changed design) */
+/* .button{
     width: 50px;
     height: 50px;
     background: #D4B79B;
@@ -203,4 +192,4 @@ label{
     border: 1px solid #D4B79B;
     border-radius: 10px;
 
-}
+} */
