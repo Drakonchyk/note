@@ -76,7 +76,7 @@
   .text {
     width: 60%;
     display: flex;
-    text-align: left;
+    text-align: center;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -130,4 +130,7 @@
   font-size: 25px;
   padding-left: 25px;
   font-family: 'Montserrat', sans-serif
+}
+.member-info p{
+  margin-top: 10px;
 }
