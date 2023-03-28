@@ -176,6 +176,23 @@ background-color: rgb(182, 161, 98);
   height: 20px;
   width: 20px;
 }
+.tabs-option{
+  margin-left: 35px;
+  margin-bottom: 20px;
+}
+.tabs-option label{
+  font-size: 24px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  display: block;
+
+}
+.tabs-option input[type="checkbox"] {
+  accent-color: #665647;
+  color: #896e55;
+  height: 20px;
+  width: 20px;
+}
 
 /* .option-button {
   background-color: #fdf8f3;

@@ -68,13 +68,13 @@
     background-image: url('logo1.jpg');
     background-size: cover;
     background-position: center;
-    margin-top: 20px;
+    margin-top: 40px;
   }
 
 
   /* CSS styles for the text */
   .text {
-    width: 1000px;
+    width: 60%;
     display: flex;
     text-align: left;
     flex-direction: column;
@@ -82,7 +82,7 @@
     align-items: center;
     margin-top: 50px;
     margin-bottom: 50px;
-    font-size: 24px;
+    font-size: 30px;
     font-family: 'Montserrat', sans-serif;
     padding: 10px;
   }
