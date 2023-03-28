@@ -48,4 +48,4 @@ object_detail() function finds an object in the database and renders a song page
 If you want to visit our site you will have to run program app.py, and then click on the link that will pop up in the terminal.
 
 ### Project was made by Olena Azarova, Anastasiia Pelekh, David Ilnytskyy, Vitaliy Paliychuk and Sofia Shuliak. 
-## We hope you like it!
+### We hope you like it!
