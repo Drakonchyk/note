@@ -29,6 +29,7 @@
 
   <div class="song">
     <h3>{{ object.title }} - {{ object.author }}</h3>
+    <h5>{{ object.instrument }} {{ object.categories }}</h5>
         <div class="text">
         {% for line in object.text %}
         <p>{{ line }}</p>

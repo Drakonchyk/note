@@ -58,13 +58,13 @@ def create():
                                    'categories': 'chords','instrument': instrument, 'text': text})
         elif instrument == 'piano':
             db.Piano.insert_one({'title': name, 'author': authr,
-                                 'categories': 'chords', 'instrument': instrument, 'text': text})
+                                 'categories': 'tabs', 'instrument': instrument, 'text': text})
         elif instrument == 'drums':
             db.Drums.insert_one({'title': name, 'author': authr,
-                                 'categories': 'chords','instrument': instrument, 'text': text})
+                                 'categories': 'tabs','instrument': instrument, 'text': text})
         else:
             db.Kalimba.insert_one({'title': name, 'author': authr,
-                                   'categories': 'chords','instrument': instrument, 'text': text})
+                                   'categories': 'tabs','instrument': instrument, 'text': text})
     return render_template('create.html')
 
 @app.route('/object/<object_id>')
