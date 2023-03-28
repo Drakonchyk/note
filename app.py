@@ -48,23 +48,29 @@ def create():
         authr = request.form['author_name']
         instrument = request.form['instr']
         text = request.form['song_text'].split('\n')
+        choice = request.form.get('want_tabs')
         if instrument is None or text is None or authr is None or name is None:
             return 'You havent filled all fields!'
         if instrument == 'guitar':
             db.Guitar.insert_one({'title': name, 'author': authr,
-                                  'categories': 'chords','instrument': instrument, 'text': text})
+                                  'categories': 'tabs' if choice else 'chords',
+                                  'instrument': instrument, 'text': text})
         elif instrument == 'ukulele':
             db.Ukulele.insert_one({'title': name, 'author': authr,
-                                   'categories': 'chords','instrument': instrument, 'text': text})
+                                   'categories': 'tabs' if choice else 'chords',
+                                   'instrument': instrument, 'text': text})
         elif instrument == 'piano':
             db.Piano.insert_one({'title': name, 'author': authr,
-                                 'categories': 'tabs', 'instrument': instrument, 'text': text})
+                                 'categories': 'tabs', 
+                                 'instrument': instrument, 'text': text})
         elif instrument == 'drums':
             db.Drums.insert_one({'title': name, 'author': authr,
-                                 'categories': 'tabs','instrument': instrument, 'text': text})
+                                 'categories': 'tabs',
+                                 'instrument': instrument, 'text': text})
         else:
             db.Kalimba.insert_one({'title': name, 'author': authr,
-                                   'categories': 'tabs','instrument': instrument, 'text': text})
+                                   'categories': 'tabs',
+                                   'instrument': instrument, 'text': text})
     return render_template('create.html')
 
 @app.route('/object/<object_id>')
