@@ -160,14 +160,24 @@ background-color: rgb(182, 161, 98);
 }
 
 .option {
-  display: flex;
+  display: inline-block;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 0 20px;
+  margin-bottom: 25px;
+  font-size: 24px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+.option input[type="radio"]{
+  accent-color: #665647;
+  color: #896e55;
+  height: 20px;
+  width: 20px;
 }
 
-.option-button {
+/* .option-button {
   background-color: #fdf8f3;
   color: #665647;
   font-size: 24px;
@@ -183,7 +193,7 @@ background-color: rgb(182, 161, 98);
 .option-button.active {
   background-color: #c7a589;
   color: #fff;
-}
+} */
 
 .input-container {
   display: flex;
