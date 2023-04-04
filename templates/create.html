@@ -31,8 +31,8 @@
     <div class="form-container">
         <form action="{{ url_for('create') }}" method="POST">
             <div class="input-container">
-                <input type="text" name='song_name' class='song-name' placeholder="Song name..."><br>
-                <input type="text" name = 'author_name' class='author-name' placeholder="Author name..."><br>
+                <input type="text" name='song_name' class='song-name' placeholder="Song name..." required><br>
+                <input type="text" name = 'author_name' class='author-name' placeholder="Author name..." required><br>
                 <input type="submit" value="Submit">
             </div>
         
@@ -41,26 +41,26 @@
 
 
     <div class="options-container">
-        <div class="option">
-          <input type="radio" id="option1" name="instr" value="guitar" />
-          <label for="option1">Guitar</label>
-        </div>
-        <div class="option">
-          <input type="radio" id="option2" name="instr" value="ukulele" />
-          <label for="option2">Ukulele</label>
-        </div>
-        <div class="option">
-          <input type="radio" id="option3" name="instr" value="piano" />
-          <label for="option3">Piano</label>       
-        </div>
-        <div class="option">
-          <input type="radio" id="option4" name="instr" value="drums" />
-          <label for="option4">Drums</label>       
-        </div>
-        <div class="option">
-          <input type="radio" id="option5" name="instr" value="kalimba" />
-          <label for="option5">Kalimba</label>        
-        </div>
+      <div class="option">
+        <input type="radio" id="option1" name="instr" value="guitar" />
+        <label for="option1">Guitar</label>
+      </div>
+      <div class="option">
+        <input type="radio" id="option2" name="instr" value="ukulele" required/>
+        <label for="option2">Ukulele</label>
+      </div>
+      <div class="option">
+        <input type="radio" id="option3" name="instr" value="piano" />
+        <label for="option3">Piano</label>
+      </div>
+      <div class="option">
+        <input type="radio" id="option4" name="instr" value="drums" />
+        <label for="option4">Drums</label>
+      </div>
+      <div class="option">
+        <input type="radio" id="option5" name="instr" value="kalimba" />
+        <label for="option5">Kalimba</label>
+      </div>
     </div>
 
     <div class="tabs-option">
@@ -71,7 +71,7 @@
     </div>
     
     <div class="input-container">
-        <textarea class="textarea" name = "song_text" placeholder="Enter your text here..."></textarea>
+        <textarea class="textarea" name = "song_text" placeholder="Enter your text here..." required></textarea>
     </div>
         </form>
     </div>
