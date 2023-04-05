@@ -4,6 +4,11 @@
 	text-decoration: none;
 	box-sizing: border-box;
 }  
+  body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   /* styles for menu started */
   header{
     width: 100%;
@@ -14,12 +19,20 @@
     z-index: 100;
     font-family: 'Sawarabi Gothic', sans-serif;
     border-bottom: 2px solid rgb(105, 80, 80);
+    display: inline-block;
 }
 
-
+.wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
   .menu{
     text-align: center;
-
+    display: block;
+    justify-content: center;
+    align-items: center;
   }
 
   .logo-image {
@@ -47,6 +60,23 @@
     color: #896e55;
     text-decoration: none;  
   }
+
+
+  .login {
+    position: absolute;
+    top: 70px;
+    right: 30px;
+  }
+  .login a{
+    text-decoration: none;
+    color: #0F192D;
+    font-size: 34px;
+}
+  .login a:hover{
+    color: #896e55;
+    text-decoration: none;  
+  }
+
 
 .searching{
     width: 100%;
