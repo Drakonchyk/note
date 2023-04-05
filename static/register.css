@@ -46,7 +46,7 @@
 
   /* more styles added to beautify the input fields */
 input {
-    margin: 0.25em 0em 1em 0em;
+    margin: 0.25em 0em 0.6em 0em;
     outline: none;
     padding: 0.5em;
     border: none;
@@ -54,6 +54,11 @@ input {
     font-size: 20px;
     border-radius: 0.25em;
     color: black;
+  }
+  .mistake{
+    color: red;
+    font-size: 10px;
+    font-family: 'Montserrat', sans-serif;
   }
 
   /* styles for button */
