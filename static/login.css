@@ -81,7 +81,7 @@ button:hover {
 
 .subcontainer a{
     font-size: 16px;
-    margin-bottom: 12px;
+    margin-bottom: 7px;
 }
 
 /* span.forgotpsd a {
@@ -109,6 +109,13 @@ button:hover {
   
   .register a:link{
     text-decoration: none;
+  }
+
+
+  .mistake{
+    color: red;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
   }
 
   /* Media queries for the responsiveness of the page */
