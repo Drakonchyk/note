@@ -55,9 +55,16 @@ def about():
 @app.route('/register')
 def register():
     """
-    Opens page or registration
+    Opens registration page
     """
     return render_template('register.html')
+
+@app.route('/login')
+def login():
+    """
+    Opens login page
+    """
+    return render_template('login.html')
 
 @app.route('/create', methods=['GET', 'POST'])
 def create():
