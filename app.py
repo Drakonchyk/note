@@ -52,6 +52,12 @@ def about():
     opens page with information about the site
     """
     return render_template('about.html')
+@app.route('/register')
+def register():
+    """
+    Opens page or registration
+    """
+    return render_template('register.html')
 
 @app.route('/create', methods=['GET', 'POST'])
 def create():
