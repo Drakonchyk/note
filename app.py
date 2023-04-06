@@ -47,7 +47,7 @@ def welcome():
     """
     return render_template('welcome.html')
 
-@app.route('/welcome')
+@app.route('/welcome_loged')
 def welcome_loged():
     """
     opens main page as loged user
