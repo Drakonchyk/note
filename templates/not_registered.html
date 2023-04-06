@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://kit.fontawesome.com/b561b2708c.js" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Sawarabi+Gothic&display=swap" rel="stylesheet">
+
+    <title>Welcome to Note!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='not_registered.css') }}">
+    
+  </head>
+  <body>
+    <header>
+      <nav>
+  <div class="wrap">
+    <div class="menu">
+      <ul>
+        <li><a href="{{ url_for('about') }}">ABOUT US</a> </li>
+        <li><a href="#"><img src="{{ url_for('static', filename='logo1.jpg') }}" alt="Logo" class="logo-image"></a> </li>
+        <li><a href="{{ url_for('create') }}">CREATE!</a> </li>
+      </ul>
+    </div>  
+    <div class="login">
+      <a href="{{ url_for('login') }}">LOG IN!</a>
+    </div>
+  </div>
+  </nav>
+  </header>
+    <div class="text">You are not registered! <a href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Sawarabi+Gothic&display=swap">LOG IN!</a></div>
+  </body>
+</html>
