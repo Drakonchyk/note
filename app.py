@@ -2,8 +2,9 @@
 flask code for our 'note' project
 """
 import secrets #for secret_key, generates secure random numbers for cryptographic purposes.
-from flask import Flask, render_template, request, abort
+from flask import Flask, render_template, request, abort, url_for, redirect, session
 import pymongo
+import bcrypt
 from bson import ObjectId
 from filters import Filter, Search
 
@@ -52,18 +53,37 @@ def about():
     opens page with information about the site
     """
     return render_template('about.html')
-@app.route('/register')
+
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     """
     Opens registration page
     """
+    if request.method == 'POST':
+        user = request.form['username']
+        mail = request.form['email']
+        __password = request.form['pwd']
+        __rep_password = request.form['pwd-repeat']
+        hashed = bcrypt.hashpw(__password.encode('utf-8'), bcrypt.gensalt())
+        if (not user or not mail or not __password
+            or not __rep_password or __password != __rep_password
+            or list(db.Users.find({"email": mail})) or list(db.Users.find({"name": user}))):
+            return render_template('register.html')
+        db.Users.insert_one({"name": user, "email": mail, "password": hashed})
+        return render_template('login.html')
     return render_template('register.html')
 
-@app.route('/login')
+
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    """
-    Opens login page
-    """
+    if request.method == 'POST':
+        username = request.form['username']
+        __password = request.form['pswrd']
+        user = db.Users.find_one({"name": username})
+        if user:
+            if bcrypt.checkpw(__password.encode('utf-8'), user['password']):
+                return render_template('welcome.html')
+        return render_template('login.html')
     return render_template('login.html')
 
 @app.route('/create', methods=['GET', 'POST'])

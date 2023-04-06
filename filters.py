@@ -1,4 +1,5 @@
 """ Search class """
+import re
 from pymongo import MongoClient
 
 client = MongoClient("mongodb+srv://user:user-password@testcluster.tyin0tg.mongodb.net/?retryWrites=true&w=majority")
@@ -83,3 +84,30 @@ searches for songs which title or author mathicng the request
         if result:
             return result
         return None
+
+class ValidateEmail:
+    """
+    check if email is appropriate
+    """
+
+    def validate_email(self, email:str)-> bool:
+        """
+        validate email
+        """
+        if '..' in email:
+            return False
+        pattern = r"^[^\.\s][^\s]{0,63}(?<!\.)@[a-z]+(\.[a-z]+)*\.(com|org|edu|gov|net|ua)$"
+        if re.fullmatch(pattern, email):
+            return True
+        return False
+
+    def validate_password(self, password:str)-> bool:
+        """
+        validate password
+        """
+        if len(password) < 8:
+            return False
+        pattern = r'[^\s]{0,32}[\!\@\#\$\%\^\&\*]{1,9}[^\s]{0,32}'
+        if re.fullmatch(pattern, password):
+            return True
+        return False

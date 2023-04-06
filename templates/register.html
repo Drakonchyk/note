@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
   </head>
   <body>
-    <form>
+    <form action="{{ url_for('register') }}" method="POST">
         <div class="container">
           <h1>Register</h1>
           <p>Fill in this form to register.</p>
