@@ -27,9 +27,11 @@
             id="username"
             required
           />
+          {% if troubles and troubles[0] == 0 %}
           <div class="mistake">
           <label for="username-prob"><b>Invalid user</b></label>          
           </div>
+          {% endif %}
           <label for="email"><b>Email</b></label>
           <input
             type="text"
@@ -38,9 +40,11 @@
             id="email"
             required
           />
+          {% if troubles and troubles[1] == 0 %}
           <div class="mistake">
             <label for="email-prob"><b>Invalid email</b></label>          
         </div>
+        {% endif %}
   
           <label for="pwd"><b>Password</b></label>
           <input
@@ -50,10 +54,11 @@
             id="pwd"
             required
           />
+          {% if troubles and troubles[2] == 0 %}
           <div class="mistake">
             <label for="password-prob"><b>Password must contain...</b></label>          
             </div>
-  
+            {% endif %}
           <label for="pwd-repeat"><b>Repeat Password</b></label>
           <input
             type="password"
@@ -62,9 +67,11 @@
             id="pwd-repeat"
             required
           />
+          {% if troubles and troubles[3] == 0 %}
           <div class="mistake">
             <label for="pwd-repeat-prob"><b>Passwords do not match</b></label>          
             </div>
+          {% endif %}
   
           <button type="submit">Register</button>
         </div>

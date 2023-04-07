@@ -85,7 +85,7 @@ searches for songs which title or author mathicng the request
             return result
         return None
 
-class ValidateEmail:
+class ValidateUser:
     """
     check if email is appropriate
     """
