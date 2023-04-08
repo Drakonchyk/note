@@ -227,11 +227,13 @@ label{
     border-radius: 30px;
 }
 .content p{
-  display: flex;
-  height: auto;
-  align-items: center;
+  /* display: flex;
+  height: auto; */
+  /* align-items: center; */
+  margin-top: 40px;
   text-align: center;
-  font-size: 30px;
+  font-size: 70px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .song-name a{
