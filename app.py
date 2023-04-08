@@ -63,6 +63,7 @@ def about():
         return render_template('about.html', log = 1)
     return render_template('about.html', log = 0)
 
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     """
@@ -110,6 +111,7 @@ def login():
             return redirect(url_for('user1'))
         return render_template('login.html')
 
+
 @app.route('/user')
 def user1():
     """
@@ -118,6 +120,7 @@ def user1():
     if "username" in session:
         return render_template('welcome.html', log = 1)
     return render_template('login.html')
+
 
 @app.route('/create', methods=['GET', 'POST'])
 def create():
@@ -163,6 +166,7 @@ def create():
         return render_template('welcome.html', log = 1)
     return render_template('create.html')
 
+
 @app.route('/object/<object_id>')
 def object_detail(object_id):
     """
@@ -183,6 +187,7 @@ def object_detail(object_id):
     if "username" in session:
         return render_template('song_pg.html', object=obj, log = 1)
     return render_template('song_pg.html', object=obj, log = 0)
+
 
 @app.route("/logout")
 def logout():
