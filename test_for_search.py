@@ -1,6 +1,6 @@
 '''test'''
 from unittest import *
-from search import *
+from filters import *
 class TestSearchModule(TestCase):
     '''This class contains test for Search module'''
 
@@ -18,7 +18,7 @@ class TestSearchModule(TestCase):
                                                                                       'A|--------------2--0--2--3---------------------------',
                                                                                       'E|-----------------------------------------------------']}])
         self.assertEqual(Search('hehe i lowe men', ['guitar']).find(), None)
-        self.assertEqual(Search('hehe i lowe men', ['pianino']).find(), None)
+        self.assertEqual(Search('hehe i lowe men', ['piano']).find(), None)
         self.assertEqual(Search('hehe i lowe men', ['ukulele']).find(), None)
         self.assertEqual(Search('hehe i lowe men', ['guitar'], tipe='chords').find(), None)
         self.assertEqual(Search('hehe i lowe men', ['guitar'], tipe='tabs').find(), None)

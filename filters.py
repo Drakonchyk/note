@@ -139,7 +139,7 @@ class Search(Filter):
         result = []
         songs = Filter(self.instruments).get_filtered_songs()
         for song in songs:
-            if Checker.find_matches(song) and (song['categories']==self.tipe or self.tipe == 'both'):
+            if Checker.find_matches(song) and self.tipe in (song['categories'], 'both'):
                 result.append(song)
 
         if result:
