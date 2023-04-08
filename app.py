@@ -15,9 +15,6 @@ db = client.get_database('SongDatabase')
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(16) #secret_key, should not change that
 
-def getUserStats():
-
-    return {'name': session['username']}
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
@@ -180,7 +177,9 @@ def object_detail(object_id):
     if obj is None:
         abort(404)
     obj = obj[0]
-    return render_template('song_pg.html', object=obj)
+    if "username" in session:
+        return render_template('song_pg.html', object=obj, log = 1)
+    return render_template('song_pg.html', object=obj, log = 0)
 
 @app.route("/logout")
 def logout():
