@@ -29,7 +29,8 @@ class Filter:
         if 'drums' in self.instruments:
             self.collections.append(db.Drums)
 
-        return self.collections
+        return DateSort(self.collections, 1).sort_by_dates()
+
 
 
 class SearchAlgorithm:
@@ -94,7 +95,7 @@ class SearchAlgorithm:
                 pass
             elif number_of_spaces == len(re.findall(r'\s+', textline)): # if request and line have similiar length
                 if difflib.SequenceMatcher(None, textline.lower(), self.searching.lower()).ratio() >= 0.75:
-                                    return True
+                    return True
             else: # if request is shorter than line that we check
                 try:
                     while cont and spaces != [] and textline != '':
@@ -125,7 +126,6 @@ class SearchAlgorithm:
         '''This method implements main search'''
         return self.without_mistakes(song) or self.one_word_req(song) or self.lots_word_req(song)
 
-
 class Search(Filter):
     '''This class search songs by name, author, or text'''
     def __init__(self, request, instruments = ['kalimba', 'guitar', 'ukulele', 'piano', 'drums'], tipe = 'both') -> None:
@@ -137,23 +137,42 @@ class Search(Filter):
         '''This method finds song'''
         Checker = SearchAlgorithm(self.request)
         result = []
-        collections = Filter(self.instruments).get_filtered_songs()
-        for collection in collections:
-            if self.tipe == 'both':
-                file = list(collection.find({'categories': 'chords'}))
-                file += list(collection.find({'categories': 'tabs'}))
-            elif self.tipe == 'chords':
-                file = list(collection.find({'categories': 'chords'}))
-            else:
-                file = list(collection.find({'categories': 'tabs'}))
-            for song in file:
-                if Checker.find_matches(song):
-                    result.append(song)
+        songs = Filter(self.instruments).get_filtered_songs()
+        for song in songs:
+            if Checker.find_matches(song) and self.tipe in (song['categories'], 'both'):
+                result.append(song)
+
         if result:
             return result
-            # sorted_res = DateSort(1, self.instruments, self.tipe).sort_by_dates()
-            # return sorted_res
         return None
+# class Search(Filter):
+#     '''This class search songs by name, author, or text'''
+#     def __init__(self, request, instruments = ['kalimba', 'guitar', 'ukulele', 'piano', 'drums'], tipe = 'both') -> None:
+#         '''This method contains variables'''
+#         super().__init__(instruments, tipe)
+#         self.request = request
+
+#     def find(self):
+#         '''This method finds song'''
+#         Checker = SearchAlgorithm(self.request)
+#         result = []
+#         collections = Filter(self.instruments).get_filtered_songs()
+#         for collection in collections:
+#             if self.tipe == 'both':
+#                 file = list(collection.find({'categories': 'chords'}))
+#                 file += list(collection.find({'categories': 'tabs'}))
+#             elif self.tipe == 'chords':
+#                 file = list(collection.find({'categories': 'chords'}))
+#             else:
+#                 file = list(collection.find({'categories': 'tabs'}))
+#             for song in file:
+#                 if Checker.find_matches(song):
+#                     result.append(song)
+#         if result:
+#             return result
+#             # sorted_res = DateSort(1, self.instruments, self.tipe).sort_by_dates()
+#             # return sorted_res
+#         return None
 
 
 class ValidateUser:
@@ -176,27 +195,25 @@ class ValidateUser:
         """
         validate password
         """
-        if len(password) < 8:
-            return False
-        pattern = r'[^\s]{0,32}[\!\@\#\$\%\^\&\*]{1,9}[^\s]{0,32}'
+        pattern = r'[^\s]{8,48}'
         if re.fullmatch(pattern, password):
             return True
         return False
 
 class DateSort:
     '''This class sorts songs by dates'''
-    def __init__(self, sort_position=1, instruments = ['kalimba', 'guitar', 'ukulele', 'piano', 'drums'],\
-                 tipe = 'both'):
+    def __init__(self, songs, sort_position=1):
         'This method contains variables'
         self.sort_position = sort_position
-        self.instruments = instruments
-        self.tipe = tipe
+        self.songs = songs
+        # self.instruments = instruments
+        # self.tipe = tipe
 
     def sort_by_dates(self):
         '''This method sorts songs and datesin
         ascending way if sort_position = 1
         in descending way if sort_position = 0'''
-        collections = Filter(instruments=self.instruments, tipe=self.tipe).get_filtered_songs()
+        collections = self.songs
         sorted_songs = []
         for collection in collections:
             if self.sort_position:

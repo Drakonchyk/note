@@ -147,17 +147,17 @@ def create():
                                    'uploaded_by': username, 'date':date})
         elif instrument == 'piano':
             db.Piano.insert_one({'title': name, 'author': authr,
-                                 'categories': 'tabs', 
+                                 'categories': 'tabs' if choice else 'chords', 
                                  'instrument': instrument, 'text': text,
                                  'uploaded_by': username, 'date':date})
         elif instrument == 'drums':
             db.Drums.insert_one({'title': name, 'author': authr,
-                                 'categories': 'tabs',
+                                 'categories': 'tabs' if choice else 'chords',
                                  'instrument': instrument, 'text': text,
                                  'uploaded_by': username, 'date':date})
         else:
             db.Kalimba.insert_one({'title': name, 'author': authr,
-                                   'categories': 'tabs',
+                                   'categories': 'tabs' if choice else 'chords',
                                    'instrument': instrument, 'text': text, 
                                    'uploaded_by': username, 'date':date})
         return render_template('welcome.html', log = 1)
@@ -170,13 +170,16 @@ def object_detail(object_id):
     renders a song page with its details
     """
     obj = []
-    for collection in Filter().get_filtered_songs():
-        obj = list(collection.find({ '_id': ObjectId(object_id) }))
-        if obj:
+    for song in Filter().get_filtered_songs():
+        if song['_id'] == ObjectId(object_id):
+            obj = song
             break
+        # obj = list(collection.find({ '_id': ObjectId(object_id) }))
+        # if obj:
+        #     break
     if obj is None:
         abort(404)
-    obj = obj[0]
+    # obj = obj[0]
     if "username" in session:
         return render_template('song_pg.html', object=obj, log = 1)
     return render_template('song_pg.html', object=obj, log = 0)
