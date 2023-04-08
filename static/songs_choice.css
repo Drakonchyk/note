@@ -180,9 +180,12 @@
 
 /* styles for filters (Instruments + Chords/Tabs) */
 .filters{
+    display: flex;
     width: 25%;
+    height: 100vh;
     background-color: #F4EDE7;
     padding: 10px;
+
 }
 #filter{
     float: left;
@@ -221,6 +224,13 @@ label{
     text-align: center;
     background-color: #D4B79B;
     border-radius: 30px;
+}
+.content p{
+  display: flex;
+  height: auto;
+  align-items: center;
+  text-align: center;
+  font-size: 30px;
 }
 
 .song-name a{
