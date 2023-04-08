@@ -182,7 +182,8 @@
 .filters{
     display: flex;
     width: 25%;
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
     background-color: #F4EDE7;
     padding: 10px;
 
