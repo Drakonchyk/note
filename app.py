@@ -147,17 +147,17 @@ def create():
                                    'uploaded_by': username, 'date':date})
         elif instrument == 'piano':
             db.Piano.insert_one({'title': name, 'author': authr,
-                                 'categories': 'tabs', 
+                                 'categories': 'tabs' if choice else 'chords', 
                                  'instrument': instrument, 'text': text,
                                  'uploaded_by': username, 'date':date})
         elif instrument == 'drums':
             db.Drums.insert_one({'title': name, 'author': authr,
-                                 'categories': 'tabs',
+                                 'categories': 'tabs' if choice else 'chords',
                                  'instrument': instrument, 'text': text,
                                  'uploaded_by': username, 'date':date})
         else:
             db.Kalimba.insert_one({'title': name, 'author': authr,
-                                   'categories': 'tabs',
+                                   'categories': 'tabs' if choice else 'chords',
                                    'instrument': instrument, 'text': text, 
                                    'uploaded_by': username, 'date':date})
         return render_template('welcome.html', log = 1)
