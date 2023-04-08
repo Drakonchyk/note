@@ -337,15 +337,27 @@ label{
 
 .btn {
   font-size: 30px;
-  /* border: 2px solid #5b4734; */
-  border-radius: 15%;
+  border-radius: 17%;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  background-color: #D4B79B;
+  color: black;
+  height: 55px;
+  width: 90px;
+}
+.pagination-btn p{
+  margin-right: 10px;
+  font-size: 30px;
+  border-radius: 20%;
   padding: 8px;
   margin-top: 20px;
   margin-bottom: 30px;
   background-color: #D4B79B;
   color: black;
+  height: 55px;
+  width: 60px;
+  
 }
-
 .btn:hover{
   color: white;
 }
