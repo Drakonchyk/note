@@ -15,6 +15,7 @@ db = client.get_database('SongDatabase')
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(16) #secret_key, should not change that
 
+SONGS_PER_PAGE = 5
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
