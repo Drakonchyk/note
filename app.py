@@ -170,13 +170,16 @@ def object_detail(object_id):
     renders a song page with its details
     """
     obj = []
-    for collection in Filter().get_filtered_songs():
-        obj = list(collection.find({ '_id': ObjectId(object_id) }))
-        if obj:
+    for song in Filter().get_filtered_songs():
+        if song['_id'] == ObjectId(object_id):
+            obj = song
             break
+        # obj = list(collection.find({ '_id': ObjectId(object_id) }))
+        # if obj:
+        #     break
     if obj is None:
         abort(404)
-    obj = obj[0]
+    # obj = obj[0]
     if "username" in session:
         return render_template('song_pg.html', object=obj, log = 1)
     return render_template('song_pg.html', object=obj, log = 0)

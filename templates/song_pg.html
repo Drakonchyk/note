@@ -50,7 +50,11 @@
         {% endfor %}
         </div>
       <div class="uploaded-by">
+        {% if object.uploaded_by == 'Promoted by Note' %}
+        <h4>{{ object.uploaded_by }}</h4>
+        {% else %}
         <h4>Uploaded by {{ object.uploaded_by }}</h4>
+        {% endif %}
         <h4>Date: {{ object.date }}</h4>
       </div>
     
