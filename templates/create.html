@@ -23,6 +23,14 @@
 
 
         </div>
+        <div class="login">
+          <div class="dropdown">
+            <button class="dropbtn"> {{ session.username }} </button>
+            <div class="dropdown-content">
+              <a href="{{ url_for('logout') }}">Log out</a>
+            </div>
+          </div>
+        </div>
       </div>
       </nav>
     </header>

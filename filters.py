@@ -7,21 +7,17 @@ client = MongoClient("mongodb+srv://user:user-password@testcluster.tyin0tg.mongo
 db = client.get_database('SongDatabase')
 
 class Filter:
-    """
-    class for filtering songs
-    """
-    def __init__(self, instruments = ['kalimba', 'guitar', 'ukulele', 'piano', 'drums'],
+    '''This class represents filter for instruments, chords or tabs'''
+    def __init__(self,\
+                 instruments = ['kalimba', 'guitar', 'ukulele', 'piano', 'drums'],\
                  tipe = 'both') -> None:
+        '''This method contains variables'''
         self.instruments = instruments
         self.collections = []
         self.tipe = tipe # 'chords', 'tabs' or 'both'
 
-    def get_filtered_songs(self) -> list:
-        """
-        add wanted collections to the list of collections (self.collections)
-        and return the final list
-        """
-
+    def get_filtered_songs(self):
+        '''This method returns filtered songs'''
         if 'guitar' in self.instruments:
             self.collections.append(db.Guitar)
         if 'kalimba' in self.instruments:
@@ -34,6 +30,7 @@ class Filter:
             self.collections.append(db.Drums)
 
         return self.collections
+
 
 class SearchAlgorithm:
     '''This class implements search algorithms.
@@ -56,29 +53,54 @@ class SearchAlgorithm:
 
     def one_word_req(self, song):
         '''This method handles mistakes in search request, if request consists of 1 word'''
-        match_ratio = max([max([difflib.SequenceMatcher(None, element.lower(), self.searching.lower()).ratio() for element in re.split(r'\s+', textline)]) for textline in song['text']])
-        return song['instrument'] in {'piano', 'guitar', 'ukulele'} and song['categories'] == 'chords' and match_ratio >= 0.75
+        match_ratio_text = max([max([difflib.SequenceMatcher(None, element.lower(), self.searching.lower()).ratio() for element in re.split(r'\s+', textline)]) for textline in song['text']])
+        match_ratio_title = difflib.SequenceMatcher(None, song['title'].lower(), self.searching.lower()).ratio()
+        match_ratio_author = difflib.SequenceMatcher(None, song['author'].lower(), self.searching.lower()).ratio()
+        return song['instrument'] in {'piano', 'guitar', 'ukulele'} and song['categories'] == 'chords' and match_ratio_text >= 0.75 or max(match_ratio_author, match_ratio_title) >= 0.75
 
     def lots_word_req(self, song):
         ''''This method handles requests with number of words > 1, that have mistakes'''
-        number_of_words = len(re.findall(r'\s+', self.searching)) + 1
-        if number_of_words == 1:
+        number_of_spaces = len(re.findall(r'\s+', self.searching))
+        if number_of_spaces == 1:
             return False
-        for textline in song['text']:
+        check_list = song['text']
+
+        # check for title
+        if len(re.findall(r'\s+', song['title'])) < number_of_spaces:
+            pass
+        elif len(re.findall(r'\s+', song['title'])) == number_of_spaces:
+            if difflib.SequenceMatcher(None, song['title'].lower(), self.searching.lower()).ratio() >= 0.75:
+                return True
+        else:
+            if len(re.findall(r'\s+', song['title'])) != 1:
+                check_list.append(song['title'])
+
+        # check for author
+        if len(re.findall(r'\s+', song['author'])) < number_of_spaces:
+            pass
+        elif len(re.findall(r'\s+', song['author'])) == number_of_spaces:
+            if difflib.SequenceMatcher(None, song['author'].lower(), self.searching.lower()).ratio() >= 0.75:
+                return True
+        else:
+            if len(re.findall(r'\s+', song['author'])) != 1:
+                check_list.append(song['author'])
+
+        # check for text
+        for textline in check_list:
             iter_space = 0
             spaces = [num for num, el in enumerate(textline) if el == ' ']
             cont = True # variable to continue
             if len(re.findall(r'\s+', self.searching)) > len(re.findall(r'\s+', textline)): # if our request is longer that line that we check
-                continue
-            elif number_of_words - 1 == len(re.findall(r'\s+', textline)): # if request and line have similiar length
+                pass
+            elif number_of_spaces == len(re.findall(r'\s+', textline)): # if request and line have similiar length
                 if difflib.SequenceMatcher(None, textline.lower(), self.searching.lower()).ratio() >= 0.75:
                                     return True
             else: # if request is shorter than line that we check
                 try:
                     while cont and spaces != [] and textline != '':
                         if iter_space == 0: # first iteration
-                            if len(spaces) != number_of_words-1:
-                                check = textline[: spaces[number_of_words-1]]
+                            if len(spaces) != number_of_spaces:
+                                check = textline[: spaces[number_of_spaces]]
                             else:
                                 if difflib.SequenceMatcher(None, textline.lower(), self.searching.lower()).ratio() >= 0.75:
                                     return True
@@ -86,12 +108,12 @@ class SearchAlgorithm:
                                 break
 
                             iter_space += 1
-                        elif iter_space+number_of_words-1 >= len(spaces): # last iteration
+                        elif iter_space+number_of_spaces >= len(spaces): # last iteration
                             check = textline[spaces[iter_space-1]+1:]
                             iter_space += 1
                             cont = False
                         else: # medium iteration
-                            check = textline[spaces[iter_space-1]+1: spaces[iter_space+number_of_words-1]]
+                            check = textline[spaces[iter_space-1]+1: spaces[iter_space+number_of_spaces]]
                             iter_space += 1
                         if difflib.SequenceMatcher(None, check.lower(), self.searching.lower()).ratio() >= 0.75:
                             return True
@@ -103,24 +125,16 @@ class SearchAlgorithm:
         '''This method implements main search'''
         return self.without_mistakes(song) or self.one_word_req(song) or self.lots_word_req(song)
 
-class Search (Filter):
-    """
-    search for songs by author or title
-    instruments - wanted instruments for songs (by default - all are chosen)
-    tipe - type of notes
-    """
-    def __init__(self, request="",
-                 instruments = ['kalimba', 'guitar', 'ukulele', 'piano', 'drums'],
-                 tipe = 'both') -> None:
+
+class Search(Filter):
+    '''This class search songs by name, author, or text'''
+    def __init__(self, request, instruments = ['kalimba', 'guitar', 'ukulele', 'piano', 'drums'], tipe = 'both') -> None:
+        '''This method contains variables'''
         super().__init__(instruments, tipe)
         self.request = request
 
-    def find(self) -> list:
-        """
-        search for songs by instrument and by type of notes
-        (it can be chords, tabs or both) if request is given, \
-searches for songs which title or author mathicng the request  
-        """
+    def find(self):
+        '''This method finds song'''
         Checker = SearchAlgorithm(self.request)
         result = []
         collections = Filter(self.instruments).get_filtered_songs()
@@ -135,10 +149,12 @@ searches for songs which title or author mathicng the request
             for song in file:
                 if Checker.find_matches(song):
                     result.append(song)
-
         if result:
             return result
+            # sorted_res = DateSort(1, self.instruments, self.tipe).sort_by_dates()
+            # return sorted_res
         return None
+
 
 class ValidateUser:
     """

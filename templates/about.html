@@ -23,6 +23,20 @@
 
 
     </div>
+    {% if log == 0 %}  
+    <div class="login">
+      <a href="{{ url_for('login') }}">LOG IN!</a>
+    </div>
+    {% else %}
+    <div class="login">
+      <div class="dropdown">
+        <button class="dropbtn">{{ session.username }}</button>
+        <div class="dropdown-content">
+          <a href="{{ url_for('logout') }}">Log out</a>
+        </div>
+      </div>
+    </div>
+    {% endif %}
   </div>
 
   </nav>

@@ -19,13 +19,24 @@
     <div class="menu">
       <ul>
         <li><a href="{{ url_for('about') }}">ABOUT US</a> </li>
-        <li><a href="{{ url_for('welcome_loged') }}"><img src="{{ url_for('static', filename='logo1.jpg') }}" alt="Logo" class="logo-image"></a> </li>
+        <li><a href="#"><img src="{{ url_for('static', filename='logo1.jpg') }}" alt="Logo" class="logo-image"></a> </li>
         <li><a href="{{ url_for('create') }}">CREATE!</a> </li>
       </ul>
-    </div>  
+    </div>
+    {% if log == 0 %}  
     <div class="login">
       <a href="{{ url_for('login') }}">LOG IN!</a>
     </div>
+    {% else %}
+    <div class="login">
+      <div class="dropdown">
+        <button class="dropbtn"> {{ session.username }} </button>
+        <div class="dropdown-content">
+          <a href="{{ url_for('logout') }}">Log out</a>
+        </div>
+      </div>
+    </div>
+    {% endif %}
   </div>
   </nav>
   </header>

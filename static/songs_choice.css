@@ -193,3 +193,53 @@ label{
     border-radius: 10px;
 
 } */
+
+.login {
+  position: absolute;
+  top: 70px;
+  right: 30px;
+}
+.login a{
+  text-decoration: none;
+  color: #0F192D;
+  font-size: 34px;
+}
+.login a:hover{
+  color: #896e55;
+  text-decoration: none;  
+}
+
+.dropbtn{
+  text-decoration: none; 
+  color: #0F192D;
+  font-size: 34px;  
+  border: none;
+  cursor: pointer;
+  background-color: #dbcec2;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Style the links inside the dropdown */
+.dropdown-content a {
+  color: #333;
+  padding: 10px;
+  font-size: 25px;
+  text-decoration: none;
+  display: block;
+  background-color: #b19b86;
+  border-radius: 0.25em;
+  
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #fce6d2;
+}

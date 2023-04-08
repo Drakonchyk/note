@@ -15,6 +15,10 @@ db = client.get_database('SongDatabase')
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(16) #secret_key, should not change that
 
+def getUserStats():
+
+    return {'name': session['username']}
+
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     """
@@ -37,8 +41,10 @@ def search():
             tipe = ['both']
         search_songs = Search(request=query, instruments=new_instrument, tipe=tipe[0])
         results = search_songs.find()
-        return render_template('search.html', results=results)
-    return render_template('search.html')
+        if "username" in session:
+            return render_template('search.html', results=results, log=1)
+        return render_template('search.html', results=results, log=0)
+    return render_template('search.html', log=0)
 
 
 @app.route('/')
@@ -46,21 +52,19 @@ def welcome():
     """
     opens main page
     """
-    return render_template('welcome.html')
+    if "username" in session:
+        return render_template('welcome.html', log = 1)
+    return render_template('welcome.html', log = 0)
 
-@app.route('/welcome_loged')
-def welcome_loged():
-    """
-    opens main page as loged user
-    """
-    return render_template('welcome_loged.html')
 
 @app.route('/about')
 def about():
     """
     opens page with information about the site
     """
-    return render_template('about.html')
+    if "username" in session:
+        return render_template('about.html', log = 1)
+    return render_template('about.html', log = 0)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -76,13 +80,13 @@ def register():
         user_list = [True, True, True, True]
         if not user or list(db.Users.find({"name": user})):
             user_list[0] = 0
-        if not mail or list(db.Users.find({"email": mail})):
+        if not mail or list(db.Users.find({"email": mail})) or ValidateUser().validate_email(mail) is False:
             user_list[1] = 0
-        if not __password:
+        if not __password or ValidateUser().validate_password(__password) is False:
             user_list[2] = 0
         if not __rep_password or __rep_password != __password:
             user_list[3] = 0
-        if False in user_list:
+        if 0 in user_list:
             return render_template('register.html', troubles=user_list)
         db.Users.insert_one({"name": user, "email": mail, "password": hashed})
         return render_template('login.html', message="Registered succesfully!")
@@ -98,12 +102,12 @@ def login():
         username = request.form['username']
         __password = request.form['pswrd']
         user = db.Users.find_one({"name": username})
-        if user:
-            if bcrypt.checkpw(__password.encode('utf-8'), user['password']):
-                session['username'] = username
-                # return render_template('welcome.html')
-                return redirect(url_for('user1'), )
-        return render_template('login.html')
+        if not user:
+            return render_template('login.html', troubles = 'user')
+        if not __password or not bcrypt.checkpw(__password.encode('utf-8'), user['password']):
+            return render_template('login.html', troubles = 'pswrd')
+        session['username'] = username
+        return redirect(url_for('user1'), )
     else:
         if "username" in session:
             return redirect(url_for('user1'))
@@ -115,7 +119,7 @@ def user1():
     check if user logged in
     """
     if "username" in session:
-        return render_template('welcome_loged.html')
+        return render_template('welcome.html', log = 1)
     return render_template('login.html')
 
 @app.route('/create', methods=['GET', 'POST'])
@@ -159,7 +163,7 @@ def create():
                                    'categories': 'tabs',
                                    'instrument': instrument, 'text': text, 
                                    'uploaded_by': username, 'date':date})
-        return render_template('welcome_loged.html')
+        return render_template('welcome.html', log = 1)
     return render_template('create.html')
 
 @app.route('/object/<object_id>')
@@ -181,7 +185,7 @@ def object_detail(object_id):
 @app.route("/logout")
 def logout():
     session.pop('username', None)
-    return redirect(url_for('welcome'))
+    return render_template('welcome.html', log = 0)
 
 if __name__ == '__main__':
     app.run(debug=True)
