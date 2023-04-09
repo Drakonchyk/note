@@ -18,6 +18,10 @@ As a result, you will be able to type song name, author and chords or tabs. Afte
 About us page info about our project, developers, and our images.
 
 
+
+
+
+
 @Backend info
 
 ## MongoDB
