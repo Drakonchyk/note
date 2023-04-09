@@ -31,6 +31,7 @@ Filter class contains get_filetered_songs method, that sort our songs by instrum
 ### DateSort
 DateSort class contains sort_by_dates method, that sort our songs in ascending or descending way using PyMongo library methods ASCENDING and DESCENDING.
 This method takes output of Filter.get_filtered_songs() method, and returns ilst of songs, that are sorted in proper sequence.
+
 ![image](https://user-images.githubusercontent.com/116728854/230791992-88c2518c-07c9-4893-aa39-4e8c4ea47b99.png)
 
 
@@ -39,6 +40,7 @@ This class is used to start searching for songs by instrument and by type of not
 If request is given, we search for songs which title or author matching the request.
 If we have not found any data function returns None, else it returns list of songs, each song is a dictionary.
 This class contains find() method, that finds songs by text, author or title. Uses SearchAlgorithm class.
+
 ![image](https://user-images.githubusercontent.com/116728854/230792539-edbfe4f0-8106-412c-aa38-1ae5997d7750.png)
 
 
@@ -49,6 +51,7 @@ Contains one_word_req, lots_word_req, find_match methods.
 Find_match method starts one_word_req() and lots_word_req() method.
 Main algorithms work in the next way:
 Algorithm counts number of words, that were requested, and compare these words to the same length title, author, text(for each song), or if legth differ, splits text for many parts to check each one.
+
 ![image](https://user-images.githubusercontent.com/116728854/230792309-e35caff2-cfa8-42be-88e7-1b74eb7dc484.png)
 ![image](https://user-images.githubusercontent.com/116728854/230792328-dbd41e5a-48f6-4f87-83e5-dc2f47e7a6cc.png)
 
