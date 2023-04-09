@@ -139,7 +139,7 @@ class Search(Filter):
         songs = Filter(self.instruments).get_filtered_songs()
         if self.request == "":
             for song in songs:
-                if song not in result:
+                if song not in result and self.tipe in (song['categories'], 'both'):
                     result.append(song)
             return result
         for song in songs:
