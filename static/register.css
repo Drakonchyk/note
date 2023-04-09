@@ -25,7 +25,7 @@
   .container {
     display: flex;
     flex-direction: column;
-    width: 700px;
+    width: 50%;
     margin-top: 50px;
   }
   .container b{
@@ -83,4 +83,33 @@ button {
 .login{
     margin-top: 15px;
 
+}
+
+@media all and (max-device-width: 450px){
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    margin-top: 50px;
+  }
+  .container b{
+    font-size: 15px;
+    /* font-family: 'Sawarabi Gothic', sans-serif; */
+    
+  }
+  input {
+    margin: 0.25em 0em 0.6em 0em;
+    outline: none;
+    padding: 0.5em;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    font-size: 15px;
+    border-radius: 0.25em;
+    color: black;
+  }
+  .mistake{
+    color: red;
+    font-size: 5px;
+    font-family: 'Montserrat', sans-serif;
+  }
 }

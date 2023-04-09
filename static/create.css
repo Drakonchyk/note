@@ -369,117 +369,192 @@ background-color: rgb(182, 161, 98);
       color: #896e55;
       text-decoration: none;  
     }
-
-
-
-
-    /* styles for search bar  */
-  .searching{
-      width: 100%;
-      height: 35px;
-      border-bottom: 2px solid rgb(105, 80, 80);
-      display: block;
-
-  }
-    .search{
-      width: 100%;
+    .login {
       position: absolute;
-      display: flex;
-
+      top: 1px;
+      right: 5px;
+    }
+    .login a{
+      text-decoration: none;
+      color: #0F192D;
+      font-size: 13px;
     }
 
-  /* style for input line */
-    .searchTerm {
-      width: 100%;
-      border: 3px solid#5b4734;
-      border-right: none;
-      padding: 5px;
-      height: 21px;
-      border-radius: 5px 0 0 5px;
-      outline: none;
-      font-size: 14px;
-      color: #c7b7a8;
-    }
-
-    .searchTerm:focus{
-      color: #867b6f;
-    }
-
-  /* style for search button (used fontAwesome for serch icon)*/
-    .searchButton {
-      width: 22px;
-      height: 21px;
-      border: 1px solid #5b4734;
-      background: #5b4734;
-      text-align: center;
-      color: #fff;
-      border-radius: 0 5px 5px 0;
+    .dropbtn{
+      text-decoration: none; 
+      color: #0F192D;
+      font-size: 13px;  
+      border: none;
       cursor: pointer;
-      font-size: 17px;
+      background-color: #dbcec2;
     }
 
-    .wrap-search{
-      width: 60%;
-      position: absolute;
-      top: 105px;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-family: 'Sawarabi Gothic', sans-serif;
+    /* Style the links inside the dropdown */
+    .dropdown-content a {
+      color: #333;
+      padding: 5px;
+      font-size: 13px;
+      text-decoration: none;
+      display: block;
+      background-color: #b19b86;
+      border-radius: 0.25em;
+      
+    }
+      /* CSS styles for the text */
+    .text {
+      font-size: 30px;
     }
 
-  .song_choice{
-      width: 100%;
-      height: 100%;
+    .form-container{
+      display:flex;
+      align-items: center;
+    }
+    .song-name {
       display: flex;
-      flex-wrap: wrap;
-  }
-  .login {
-    position: absolute;
-    top: 1px;
-    right: 5px;
-  }
-  .login a{
-    text-decoration: none;
-    color: #0F192D;
-    font-size: 13px;
-  }
-  .login a:hover{
-    color: #896e55;
-    text-decoration: none;  
-  }
-
-  .dropbtn{
-    text-decoration: none; 
-    color: #0F192D;
-    font-size: 13px;  
-    border: none;
-    cursor: pointer;
-    background-color: #dbcec2;
-  }
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    z-index: 1;
-  }
-  /* Show the dropdown menu on hover */
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-
-  /* Style the links inside the dropdown */
-  .dropdown-content a {
-    color: #333;
-    padding: 5px;
-    font-size: 13px;
-    text-decoration: none;
-    display: block;
-    background-color: #b19b86;
-    border-radius: 0.25em;
+      justify-content: space-between;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      height: 35px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      flex-direction: column;
+      border-radius: 15px;
+      border: 3px solid#665647;
+      border-radius: 35px;
+      font-size: 16px;
+      padding: 5px;
+      margin-left: 15px;
+      background-color: #fdf8f3;
+    }
     
-  }
-
-  /* Change color of dropdown links on hover */
-  .dropdown-content a:hover {
-    background-color: #fce6d2;
-  }
+    
+    .song-name::placeholder {
+      color: #665647;
+    }
+    
+    
+    /* CSS styles for the author name input field */
+    .author-name::placeholder {
+      color: #665647;
+    }
+    
+    .author-name {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      height: 35px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      flex-direction: column;
+      border-radius: 15px;
+      border: 3px solid#665647;
+      border-radius: 35px;
+      font-size: 16px;
+      padding: 5px;
+      margin-right: 10px;
+      background-color: #fdf8f3;
+    }
+    
+    
+    /* CSS styles for the submit button */
+    input[type="submit"] {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      padding: 25px 50px;
+      border-radius: 5px;
+      border: none;
+      background-color: #c7a589;
+      color: #fff;
+      cursor: pointer;
+      bottom: 20px;
+      left: 10px;
+      left: auto;
+      transition: all 0.9s;
+      box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+    }
+    input[type="submit"]:hover{
+    background-color: rgb(182, 161, 98);
+    
+    }
+    
+    /* CSS styles for the text below input fields('Instruments') */
+    .text-below-inputs {
+      display: block;
+      text-align: center;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 2px;
+      font-size: 30px;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    
+    /* CSS styles for the options */
+    .options-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    
+    .option {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0 10px;
+      margin-bottom: 25px;
+      font-size: 15px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+    }
+    
+    /* CSS styles for the radio */
+    .option input[type="radio"]{
+      accent-color: #665647;
+      color: #896e55;
+      height: 15px;
+      width: 15px;
+    }
+    
+    /* CSS styles for the tabs */
+    .tabs-option{
+      margin-bottom: 20px;
+      text-align: center;
+      display: block;
+    }
+    
+    
+    .tabs-option label{
+      font-size: 20px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+    
+    }
+    .tabs-option input[type="checkbox"] {
+      accent-color: #665647;
+      color: #896e55;
+      height: 15px;
+      width: 15px;
+    }
+    
+    .input-container {
+      display: flex;
+    }
+    
+    /* CSS styles for the textarea */
+    .textarea {
+      vertical-align: top;
+      margin-bottom: 20px;
+      margin: 10px;
+      width: 90%;
+      height: 300px;
+      padding: 10px;
+      font-size: 18px;
+      border: 3px solid #665647;
+      border-radius: 10px;
+    }
+  
 }

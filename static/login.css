@@ -84,20 +84,6 @@ button:hover {
     margin-bottom: 7px;
 }
 
-/* span.forgotpsd a {
-    float: right;
-    color: whitesmoke;
-    padding-top: 16px;
-  }
-
-.forgotpsd a{
-    color: rgb(74, 146, 235);
-  }
-  
-.forgotpsd a:link{
-    text-decoration: none;
-  } */
-
   .register{
     color: rgb(0, 0, 0);
     text-align: center;
@@ -119,14 +105,34 @@ button:hover {
   }
 
   /* Media queries for the responsiveness of the page */
-  /* @media screen and (max-width: 600px) {
+  @media screen and (max-width: 900px) {
     form{
-      width: 25rem;
+      width: 40rem;
     }
   }
   
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 500px) {
     form{
-      width: 20rem;
+      width: 21rem;
     }
-  } */
+    p{
+      font-size: 15px;
+  }
+  
+  input[type=text], input[type=password]{
+      width: 100%;
+      margin: 10px 0;
+      border-radius: 5px;
+      padding: 10px 13px;
+      font-size: 16px;
+    }
+  
+  button {
+      padding: 14px 20px;
+      font-size: 16px;
+    }
+    .mainContainer{
+      padding: 10px;
+      font-size: 16px;
+  }
+  }
