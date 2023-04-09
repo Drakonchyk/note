@@ -205,9 +205,11 @@
       -webkit-user-select: none;
       touch-action: manipulation;
       white-space: nowrap;
-      min-height: 180px;
-      min-width: 380px;
-      margin: 50px;
+      height: 180px;
+      /* width: 380px; */
+      min-height: 90px;
+      min-width: 320px;
+      margin: 30px;
     }
   .btn:not([disabled]):focus {
       box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem #897056, .125rem .125rem 1rem #5d4a36;
@@ -241,4 +243,197 @@
     font-family: 'Montserrat', sans-serif;
   }
   
+  @media all and (max-device-width: 450px){
+    .container {
+      display: block;
+      align-items: center;
+      }
+    .row {
+      display: block;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 10px;
+      }
+
+    header{
+      width: 100%;
+      height: 100px;
+      text-align: center;
+      background-color: #dbcec2;
+      padding: 10px;
+      z-index: 100;
+      font-family: 'Sawarabi Gothic', sans-serif;
+      border-bottom: 2px solid rgb(105, 80, 80);
+    }
+    .logo-image {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      position: relative;
+      top: 10px;
+    }
+
+
+    .menu ul li{
+      display: inline-block;
+      padding: 7px;
+      margin-right: 10px;
+      
+    }
+    .menu ul li a{
+        color: #0F192D;
+        font-size: 18px;
+
+        
+    }
+    .menu ul li a:hover{
+      color: #896e55;
+      text-decoration: none;  
+    }
+
+
   
+
+    /* styles for search bar  */
+  .searching{
+      width: 100%;
+      height: 35px;
+      border-bottom: 2px solid rgb(105, 80, 80);
+      display: block;
+
+  }
+    .search{
+      width: 100%;
+      position: absolute;
+      display: flex;
+
+    }
+
+  /* style for input line */
+    .searchTerm {
+      width: 100%;
+      border: 3px solid#5b4734;
+      border-right: none;
+      padding: 5px;
+      height: 21px;
+      border-radius: 5px 0 0 5px;
+      outline: none;
+      font-size: 14px;
+      color: #c7b7a8;
+    }
+
+    .searchTerm:focus{
+      color: #867b6f;
+    }
+
+  /* style for search button (used fontAwesome for serch icon)*/
+    .searchButton {
+      width: 22px;
+      height: 21px;
+      border: 1px solid #5b4734;
+      background: #5b4734;
+      text-align: center;
+      color: #fff;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+      font-size: 17px;
+    }
+
+    .wrap-search{
+      width: 60%;
+      position: absolute;
+      top: 105px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Sawarabi Gothic', sans-serif;
+    }
+
+    .login {
+      position: absolute;
+      top: 1px;
+      right: 5px;
+    }
+    .login a{
+      text-decoration: none;
+      color: #0F192D;
+      font-size: 13px;
+    }
+    .login a:hover{
+      color: #896e55;
+      text-decoration: none;  
+    }
+
+    .dropbtn{
+      text-decoration: none; 
+      color: #0F192D;
+      font-size: 13px;  
+      border: none;
+      cursor: pointer;
+      background-color: #dbcec2;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      z-index: 1;
+    }
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Style the links inside the dropdown */
+    .dropdown-content a {
+      color: #333;
+      padding: 5px;
+      font-size: 13px;
+      text-decoration: none;
+      display: block;
+      background-color: #b19b86;
+      border-radius: 0.25em;
+      
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {
+      background-color: #fce6d2;
+    }
+    .btn {
+      background: linear-gradient(to bottom right,#98816b, #786756);
+      border: 0;
+      border-radius: 12px;
+      color: #FFFFFF;
+      cursor: pointer;
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      /* line-height: 2.5; */
+      outline: transparent;
+      padding: 5px;
+      text-align: center;
+      text-decoration: none;
+      transition: box-shadow .2s ease-in-out;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      white-space: nowrap;
+      height: 50px;
+      width: 330px;
+      margin: 5px;
+      margin-top: 25px;
+    }
+    .text {
+      display: block;
+      text-align: center;
+      /* flex-direction: column; */
+      justify-content: center;
+      align-items: center;
+      margin-top: 25px;
+      font-size: 13px;
+      font-family: 'Montserrat', sans-serif;
+    }
+  
+
+
+}
+
