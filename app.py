@@ -192,6 +192,9 @@ def object_detail(object_id):
 
 @app.route("/logout")
 def logout():
+    """
+    remove user from session and return him to the main page
+    """
     session.pop('username', None)
     return render_template('welcome.html', log = 0)
 
