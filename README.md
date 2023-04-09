@@ -11,7 +11,7 @@ On the top of our main page you can also see search-bar. If you type there song 
 We also have filters on our site. You can choose whether you want: instrument or few, type of notes.
 
 ### Create button
-If you want to share chords or tabs, you can go to the top-right side of our page and click on "Add song" button.
+If you want to share chords or tabs, you can go to the top-right side of our page and click on "Add song" button. You have to log in first to be able to add your song.
 As a result, you will be able to type song name, author and chords or tabs. After that you choose appropriate instrument and submit everything.
 
 ### About us 
