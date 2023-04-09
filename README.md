@@ -66,16 +66,19 @@ Algorithm counts number of words, that were requested, and compare these words t
 
 ## Flask
 To work with flask we are installing next libraries (except for filters and secrets):
+![image](https://user-images.githubusercontent.com/116667018/230793400-106f223a-0ead-4f88-a1fc-a7347a37a643.png)
 
-![image](https://user-images.githubusercontent.com/116728854/228357477-63ddc060-e59e-4dd8-986d-edf4929259ba.png)
 
 Firstly, we are creating secret key for the Flask application.
 After we implement search() function which submits chosen filters to class Search.
 welcome() function simply opens main page.
 about() function opens page with information about the site.
-create() function is adding songs in the database. All fields(title, author, instrument) are required, except for the checkbox 'I want_tabs!'.
+register() function opens registration page
+login() function opens page, where user can log in
+user1() function checks if user is logged in
+create() function firstly check if user is logged in, if no - then returns him to log in page, if yes - allows adding songs in the database. All fields(title, author, instrument) are required, except for the checkbox 'I want_tabs!'. It also remembers time, when song was uploaded.
 object_detail() function finds an object in the database and renders a song page with its details
-
+logout() function allows user to log out and returns him to the main page
 If you want to visit our site you will have to run program app.py, and then click on the link that will pop up in the terminal.
 
 ### Project was made by Olena Azarova, Anastasiia Pelekh, David Ilnytskyy, Vitaliy Paliychuk and Sofia Shuliak. 
