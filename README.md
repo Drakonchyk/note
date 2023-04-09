@@ -17,21 +17,42 @@ As a result, you will be able to type song name, author and chords or tabs. Afte
 ### About us 
 About us page info about our project, developers, and our images.
 
+
+@Backend info
+
 ## MongoDB
 To work with our database we have installed(pip install pymongo) pymongo library.
 To operate with our data we have created a mongo client.
 We have two main classes that work with our database: Filter, Search
 
 ### Filter
-Filter class contains get_filetered_songs method, that sort our songs by instrument and returns list of collections with certain instruments.
-![image](https://user-images.githubusercontent.com/116728854/228349959-3eb30bf4-8ea5-4fc5-a267-3e7b225543e8.png)
+Filter class contains get_filetered_songs method, that sort our songs by instrument and returns DateSort() method, that takes sorted collections as argument.
+
+### DateSort
+DateSort class contains sort_by_dates method, that sort our songs in ascending or descending way using PyMongo library methods ASCENDING and DESCENDING.
+This method takes output of Filter.get_filtered_songs() method, and returns ilst of songs, that are sorted in proper sequence.
+![image](https://user-images.githubusercontent.com/116728854/230791992-88c2518c-07c9-4893-aa39-4e8c4ea47b99.png)
+
 
 ### Search 
-This class is used to search for songs by instrument and by type of notes(it can be chords, tabs or both).
+This class is used to start searching for songs by instrument and by type of notes(it can be chords, tabs or both).
 If request is given, we search for songs which title or author matching the request.
 If we have not found any data function returns None, else it returns list of songs, each song is a dictionary.
+This class contains find() method, that finds songs by text, author or title. Uses SearchAlgorithm class.
+![image](https://user-images.githubusercontent.com/116728854/230792539-edbfe4f0-8106-412c-aa38-1ae5997d7750.png)
 
-![image](https://user-images.githubusercontent.com/116728854/228354457-1d6252b5-5252-4823-bd6f-982e6aecc4b4.png)
+
+
+### SearchAlgorithm
+This class is used to find songs by title, author, text, that can contain mistakes using MongoDB(PyMongo), difflib, re.
+Contains one_word_req, lots_word_req, find_match methods. 
+Find_match method starts one_word_req() and lots_word_req() method.
+Main algorithms work in the next way:
+Algorithm counts number of words, that were requested, and compare these words to the same length title, author, text(for each song), or if legth differ, splits text for many parts to check each one.
+![image](https://user-images.githubusercontent.com/116728854/230792309-e35caff2-cfa8-42be-88e7-1b74eb7dc484.png)
+![image](https://user-images.githubusercontent.com/116728854/230792328-dbd41e5a-48f6-4f87-83e5-dc2f47e7a6cc.png)
+
+
 
 ## Flask
 To work with flask we are installing next libraries (except for filters and secrets):
