@@ -32,6 +32,9 @@ We have two main classes that work with our database: Filter, Search
 ### Filter
 Filter class contains get_filetered_songs method, that sort our songs by instrument and returns DateSort() method, that takes sorted collections as argument.
 
+![image](https://user-images.githubusercontent.com/116728854/230792610-60f8cc07-edd7-4189-a051-d6a16841badf.png)
+
+
 ### DateSort
 DateSort class contains sort_by_dates method, that sort our songs in ascending or descending way using PyMongo library methods ASCENDING and DESCENDING.
 This method takes output of Filter.get_filtered_songs() method, and returns ilst of songs, that are sorted in proper sequence.
