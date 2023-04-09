@@ -137,10 +137,14 @@ class Search(Filter):
         Checker = SearchAlgorithm(self.request)
         result = []
         songs = Filter(self.instruments).get_filtered_songs()
+        if self.request == "":
+            for song in songs:
+                if song not in result:
+                    result.append(song)
+            return result
         for song in songs:
             if Checker.find_matches(song) and self.tipe in (song['categories'], 'both'):
                 result.append(song)
-
         if result:
             return result
         return None
