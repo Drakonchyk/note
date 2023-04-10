@@ -9,7 +9,8 @@ from flask import Flask, render_template, request, abort, url_for, redirect, ses
 from bson import ObjectId
 from filters import Filter, Search, ValidateUser
 
-client = pymongo.MongoClient("mongodb+srv://user:user-password@testcluster.tyin0tg.mongodb.net/?retryWrites=true&w=majority")
+client = pymongo.MongoClient\
+("mongodb+srv://user:user-password@testcluster.tyin0tg.mongodb.net/?retryWrites=true&w=majority")
 db = client.get_database('SongDatabase')
 
 app = Flask(__name__)
@@ -79,7 +80,8 @@ def register():
         user_list = [True, True, True, True]
         if not user or list(db.Users.find({"name": user})):
             user_list[0] = 0
-        if not mail or list(db.Users.find({"email": mail})) or ValidateUser().validate_email(mail) is False:
+        if (not mail or list(db.Users.find({"email": mail}))
+            or ValidateUser().validate_email(mail) is False):
             user_list[1] = 0
         if not __password or ValidateUser().validate_password(__password) is False:
             user_list[2] = 0
@@ -107,10 +109,9 @@ def login():
             return render_template('login.html', troubles = 'pswrd')
         session['username'] = username
         return redirect(url_for('user1'), )
-    else:
-        if "username" in session:
-            return redirect(url_for('user1'))
-        return render_template('login.html')
+    if "username" in session:
+        return redirect(url_for('user1'))
+    return render_template('login.html')
 
 
 @app.route('/user')
@@ -151,7 +152,7 @@ def create():
                                    'uploaded_by': username, 'date':date})
         elif instrument == 'piano':
             db.Piano.insert_one({'title': name, 'author': authr,
-                                 'categories': 'tabs' if choice else 'chords', 
+                                 'categories': 'tabs' if choice else 'chords',
                                  'instrument': instrument, 'text': text,
                                  'uploaded_by': username, 'date':date})
         elif instrument == 'drums':
@@ -162,7 +163,7 @@ def create():
         else:
             db.Kalimba.insert_one({'title': name, 'author': authr,
                                    'categories': 'tabs' if choice else 'chords',
-                                   'instrument': instrument, 'text': text, 
+                                   'instrument': instrument, 'text': text,
                                    'uploaded_by': username, 'date':date})
         return render_template('welcome.html', log = 1)
     return render_template('create.html')
@@ -179,12 +180,8 @@ def object_detail(object_id):
         if song['_id'] == ObjectId(object_id):
             obj = song
             break
-        # obj = list(collection.find({ '_id': ObjectId(object_id) }))
-        # if obj:
-        #     break
     if obj is None:
         abort(404)
-    # obj = obj[0]
     if "username" in session:
         return render_template('song_pg.html', object=obj, log = 1)
     return render_template('song_pg.html', object=obj, log = 0)
