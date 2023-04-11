@@ -592,3 +592,59 @@ label{
 
 
 }
+@media all and (max-width: 330px){
+
+  header{
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    background-color: #dbcec2;
+    padding: 5px;
+    z-index: 100;
+    font-family: 'Sawarabi Gothic', sans-serif;
+    border-bottom: 2px solid rgb(105, 80, 80);
+  }
+  .logo-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    position: relative;
+    top: 10px;
+  }
+
+
+  .menu ul li{
+    padding: 5px;
+    margin-right: 5px;
+    
+  }
+  .menu ul li a{
+      font-size: 15px;
+
+      
+  }
+
+#filter{
+    font-size: 10px;
+
+}
+
+/* style for size and position of checkbox */
+#filter input[type="checkbox"] {
+    transform: scale(0.85);
+}
+
+.song {
+    padding: 8px;
+    margin-top: 30px;
+
+}
+.content p{
+  margin-top: 30px;
+  font-size: 7px;
+
+}
+
+
+
+}

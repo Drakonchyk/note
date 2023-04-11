@@ -558,3 +558,126 @@ background-color: rgb(182, 161, 98);
     }
   
 }
+
+@media all and (max-width: 330px){
+
+  header{
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    background-color: #dbcec2;
+    padding: 5px;
+  }
+  .logo-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    position: relative;
+    top: 10px;
+  }
+
+
+  .menu ul li{
+    padding: 5px;
+    margin-right: 5px;
+    
+  }
+  .menu ul li a{
+      font-size: 15px;
+
+      
+  }
+
+  .text {
+    font-size: 25px;
+  }
+
+  .song-name {
+    width: 120px;
+    height: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    border-radius: 35px;
+    font-size: 13px;
+
+    margin-left: 10px;
+  }
+  
+  
+  .author-name {
+    width: 120px;
+    height: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    border-radius: 15px;
+
+    border-radius: 35px;
+    font-size: 13px;
+
+    margin-right: 10px;
+
+  }
+  
+  
+  /* CSS styles for the submit button */
+  input[type="submit"] {
+    font-size: 20px;
+    padding: 25px 50px;
+    border-radius: 5px;
+    bottom: 20px;
+    left: 10px;
+    left: auto;
+  }
+  
+  /* CSS styles for the text below input fields('Instruments') */
+  .text-below-inputs {
+    font-size: 25px;
+  }
+  
+  
+  /* CSS styles for the options */
+  .options-container {
+    margin-top: 15px;
+  }
+  
+  .option {
+    margin: 0 5px;
+    margin-bottom: 20px;
+    font-size: 12px;
+  }
+  
+  /* CSS styles for the radio */
+  .option input[type="radio"]{
+    accent-color: #665647;
+    color: #896e55;
+    height: 12px;
+    width: 12px;
+  }
+  
+  /* CSS styles for the tabs */
+  .tabs-option{
+    margin-bottom: 15px;
+  }
+  
+  
+  .tabs-option label{
+    font-size: 18px;
+  
+  }
+  .tabs-option input[type="checkbox"] {
+    accent-color: #665647;
+    color: #896e55;
+    height: 15px;
+    width: 15px;
+  }
+  
+  
+  /* CSS styles for the textarea */
+  .textarea {
+    font-size: 13px;
+    overflow: hidden;
+  }
+
+}
