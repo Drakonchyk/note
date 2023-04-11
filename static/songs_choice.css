@@ -194,6 +194,11 @@
     font-family: 'Sawarabi Gothic', sans-serif;
 
 }
+.filters p{
+  padding-top: 10px;
+  font-size: 25px;
+  padding-right: 5px;
+}
 label{
     display: block;
 }
@@ -485,6 +490,10 @@ label{
       margin-right: 5px;
   }
 
+  .filters p{
+    padding-top: 5px;
+    font-size: 10px;
+  }
   /* styles for variants of songs that is going to occure */
   .content{
       width: 75%;
