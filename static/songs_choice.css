@@ -227,7 +227,6 @@ label{
     margin-right: auto;
     height: auto;
     margin-top: 40px;
-    /* margin-left: 110px; */
     align-items: center;
     justify-content: space-between;
     text-align: center;
@@ -235,9 +234,6 @@ label{
     border-radius: 30px;
 }
 .content p{
-  /* display: flex;
-  height: auto; */
-  /* align-items: center; */
   margin-top: 40px;
   text-align: center;
   font-size: 70px;
@@ -512,7 +508,6 @@ label{
       margin-right: auto;
       height: auto;
       margin-top: 40px;
-      /* margin-left: 110px; */
       align-items: center;
       justify-content: space-between;
       text-align: center;
@@ -543,18 +538,6 @@ label{
     padding: 5px;
     text-align: right;
   }
-
-  /* style for button (comented due to changed design) */
-  /* .button{
-      width: 50px;
-      height: 50px;
-      background: #D4B79B;
-      text-align: center;
-      cursor: pointer;
-      border: 1px solid #D4B79B;
-      border-radius: 10px;
-
-  } */
 
   .login {
     position: absolute;
