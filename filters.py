@@ -1,10 +1,13 @@
-""" Search class """
+""" Filter, search, sort, validate_user algorithms"""
 import re
 import difflib
 from pymongo import MongoClient, ASCENDING, DESCENDING
 
-client = MongoClient("mongodb+srv://user:user-password@testcluster.tyin0tg.mongodb.net/?retryWrites=true&w=majority")
+
+client = MongoClient\
+("mongodb+srv://user:user-password@testcluster.tyin0tg.mongodb.net/?retryWrites=true&w=majority")
 db = client.get_database('SongDatabase')
+
 
 class Filter:
     '''This class represents filter for instruments, chords or tabs'''
@@ -32,7 +35,6 @@ class Filter:
         return DateSort(self.collections, 1).sort_by_dates()
 
 
-
 class SearchAlgorithm:
     '''This class implements search algorithms.
 
@@ -45,19 +47,18 @@ class SearchAlgorithm:
         '''This method contains variables'''
         self.searching = searching.strip()
 
-    def without_mistakes(self, song):
-        '''This method is True if search do not contain any mistakes and
-        our database contains certain song'''
-        return song['instrument'] in {'piano', 'guitar', 'ukulele'} and song['categories'] == 'chords' and any([bool(re.fullmatch(fr'(.*)?{self.searching}(.*)?', textline)) for textline in song['text']]) or\
-            re.match(self.searching, song['title']) or\
-            re.match(self.searching, song['author'])
 
     def one_word_req(self, song):
         '''This method handles mistakes in search request, if request consists of 1 word'''
-        match_ratio_text = max([max([difflib.SequenceMatcher(None, element.lower(), self.searching.lower()).ratio() for element in re.split(r'\s+', textline)]) for textline in song['text']])
-        match_ratio_title = difflib.SequenceMatcher(None, song['title'].lower(), self.searching.lower()).ratio()
-        match_ratio_author = difflib.SequenceMatcher(None, song['author'].lower(), self.searching.lower()).ratio()
-        return song['instrument'] in {'piano', 'guitar', 'ukulele'} and song['categories'] == 'chords' and match_ratio_text >= 0.75 or max(match_ratio_author, match_ratio_title) >= 0.75
+        match_ratio_text = max([max([difflib.SequenceMatcher(None, elem.lower(),
+                                                             self.searching.lower()).ratio()
+                                                             for elem in re.split(r'\s+',textline)])
+                                                             for textline in song['text']])
+        match_ratio_title = difflib.SequenceMatcher(None, song['title'].lower(),
+                                                    self.searching.lower()).ratio()
+        match_ratio_author = difflib.SequenceMatcher(None, song['author'].lower(),
+                                                     self.searching.lower()).ratio()
+        return match_ratio_text >= 0.75 or max(match_ratio_author, match_ratio_title) >= 0.75
 
     def lots_word_req(self, song):
         ''''This method handles requests with number of words > 1, that have mistakes'''
@@ -70,7 +71,8 @@ class SearchAlgorithm:
         if len(re.findall(r'\s+', song['title'])) < number_of_spaces:
             pass
         elif len(re.findall(r'\s+', song['title'])) == number_of_spaces:
-            if difflib.SequenceMatcher(None, song['title'].lower(), self.searching.lower()).ratio() >= 0.75:
+            if (difflib.SequenceMatcher(None, song['title'].lower(),
+                                        self.searching.lower()).ratio() >= 0.75):
                 return True
         else:
             if len(re.findall(r'\s+', song['title'])) != 1:
@@ -80,7 +82,8 @@ class SearchAlgorithm:
         if len(re.findall(r'\s+', song['author'])) < number_of_spaces:
             pass
         elif len(re.findall(r'\s+', song['author'])) == number_of_spaces:
-            if difflib.SequenceMatcher(None, song['author'].lower(), self.searching.lower()).ratio() >= 0.75:
+            if (difflib.SequenceMatcher(None, song['author'].lower(),
+                                        self.searching.lower()).ratio() >= 0.75):
                 return True
         else:
             if len(re.findall(r'\s+', song['author'])) != 1:
@@ -91,11 +94,17 @@ class SearchAlgorithm:
             iter_space = 0
             spaces = [num for num, el in enumerate(textline) if el == ' ']
             cont = True # variable to continue
-            if len(re.findall(r'\s+', self.searching)) > len(re.findall(r'\s+', textline)): # if our request is longer that line that we check
+
+            # if our request is longer that line that we check
+            if len(re.findall(r'\s+', self.searching)) > len(re.findall(r'\s+', textline)):
                 pass
-            elif number_of_spaces == len(re.findall(r'\s+', textline)): # if request and line have similiar length
-                if difflib.SequenceMatcher(None, textline.lower(), self.searching.lower()).ratio() >= 0.75:
+
+            # if request and line have similiar length
+            elif number_of_spaces == len(re.findall(r'\s+', textline)):
+                if difflib.SequenceMatcher(None, textline.lower(),
+                                           self.searching.lower()).ratio() >= 0.75:
                     return True
+
             else: # if request is shorter than line that we check
                 try:
                     while cont and spaces != [] and textline != '':
@@ -103,7 +112,8 @@ class SearchAlgorithm:
                             if len(spaces) != number_of_spaces:
                                 check = textline[: spaces[number_of_spaces]]
                             else:
-                                if difflib.SequenceMatcher(None, textline.lower(), self.searching.lower()).ratio() >= 0.75:
+                                if difflib.SequenceMatcher(None, textline.lower(),
+                                                           self.searching.lower()).ratio() >= 0.75:
                                     return True
                                 iter_space += 1
                                 break
@@ -114,9 +124,11 @@ class SearchAlgorithm:
                             iter_space += 1
                             cont = False
                         else: # medium iteration
-                            check = textline[spaces[iter_space-1]+1: spaces[iter_space+number_of_spaces]]
+                            check = textline[spaces[iter_space-1]+1:
+                                             spaces[iter_space+number_of_spaces]]
                             iter_space += 1
-                        if difflib.SequenceMatcher(None, check.lower(), self.searching.lower()).ratio() >= 0.75:
+                        if difflib.SequenceMatcher(None, check.lower(),
+                                                   self.searching.lower()).ratio() >= 0.75:
                             return True
                 except IndexError:
                     pass
@@ -124,62 +136,39 @@ class SearchAlgorithm:
 
     def find_matches(self, song):
         '''This method implements main search'''
-        return self.without_mistakes(song) or self.one_word_req(song) or self.lots_word_req(song)
+        return self.one_word_req(song) or self.lots_word_req(song)
+
 
 class Search(Filter):
     '''This class search songs by name, author, or text'''
-    def __init__(self, request, instruments = ['kalimba', 'guitar', 'ukulele', 'piano', 'drums'], tipe = 'both') -> None:
+    def __init__(self, request, instruments = ['kalimba', 'guitar', 'ukulele', 'piano', 'drums'],
+                 tipe = 'both') -> None:
         '''This method contains variables'''
         super().__init__(instruments, tipe)
         self.request = request
 
     def find(self):
         '''This method finds song'''
-        Checker = SearchAlgorithm(self.request)
+        checker = SearchAlgorithm(self.request)
         result = []
         songs = Filter(self.instruments).get_filtered_songs()
+        if self.request == "":
+            for song in songs:
+                if song not in result and self.tipe in (song['categories'], 'both'):
+                    result.append(song)
+            return result
         for song in songs:
-            if Checker.find_matches(song) and self.tipe in (song['categories'], 'both'):
+            if checker.find_matches(song) and self.tipe in (song['categories'], 'both'):
                 result.append(song)
-
         if result:
             return result
         return None
-# class Search(Filter):
-#     '''This class search songs by name, author, or text'''
-#     def __init__(self, request, instruments = ['kalimba', 'guitar', 'ukulele', 'piano', 'drums'], tipe = 'both') -> None:
-#         '''This method contains variables'''
-#         super().__init__(instruments, tipe)
-#         self.request = request
-
-#     def find(self):
-#         '''This method finds song'''
-#         Checker = SearchAlgorithm(self.request)
-#         result = []
-#         collections = Filter(self.instruments).get_filtered_songs()
-#         for collection in collections:
-#             if self.tipe == 'both':
-#                 file = list(collection.find({'categories': 'chords'}))
-#                 file += list(collection.find({'categories': 'tabs'}))
-#             elif self.tipe == 'chords':
-#                 file = list(collection.find({'categories': 'chords'}))
-#             else:
-#                 file = list(collection.find({'categories': 'tabs'}))
-#             for song in file:
-#                 if Checker.find_matches(song):
-#                     result.append(song)
-#         if result:
-#             return result
-#             # sorted_res = DateSort(1, self.instruments, self.tipe).sort_by_dates()
-#             # return sorted_res
-#         return None
 
 
 class ValidateUser:
     """
     check if email is appropriate
     """
-
     def validate_email(self, email:str)-> bool:
         """
         validate email
@@ -206,8 +195,6 @@ class DateSort:
         'This method contains variables'
         self.sort_position = sort_position
         self.songs = songs
-        # self.instruments = instruments
-        # self.tipe = tipe
 
     def sort_by_dates(self):
         '''This method sorts songs and datesin
