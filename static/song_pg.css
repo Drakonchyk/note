@@ -261,6 +261,7 @@
     text-align: center;
     background-color: #dbcec2;
     padding: 5px;
+    -webkit-appearance: none;
   }
   .logo-image {
     width: 60px;
@@ -279,4 +280,27 @@
   .menu ul li a{
       font-size: 15px;
   }
+}
+
+@media only screen and (max-width: 480px) {
+
+  /* adjust header height and top margin for smaller screens */
+  header {
+    height: 100px;
+    top: 0;
+  }
+
+  /* adjust logo size for smaller screens */
+  .logo-image {
+    width: 60px;
+    height: 60px;
+    top: 10px;
+  }
+
+  /* adjust font size for menu items and login link */
+  .menu ul li a, .login a {
+    font-size: 20px;
+  }
+
+
 }
